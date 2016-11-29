@@ -1,0 +1,21 @@
+This function will track an action when the user has scrolled to a certain point on the page.
+ 
+It is configurable to track multiple trigger points based on percentage of the page seen, pixel distance from the top of the page, or having scrolled past a certain element on the page.
+ 
+It will only track one action for every possible attribute value. If you scroll past multiple trigger points, it will track actions for all trigger points scrolled past. If the user's screen is tall enough that a trigger point is already visible on the page without scrolling, the action will fire for that trigger point. You can call the scrollAction function multiple times to track seperate actions for different trigger points.
+ 
+It currently has a dependency on jQuery being available on the page.
+ 
+Last Updated: 2014.02.11
+ 
+Configuration Parameters:
+
+{
+action : The name of the action to track.
+// you may only include one of the following parameters:
+percentage : An array of percentages to track as trigger points. Ex: [25, 50, 75, 100]
+pixels : An array of pixel distances to track as trigger points. Ex: [1500, 2000, 3000]
+element : A jQuery object containing an element to track as a trigger point. Only the first element in this jQuery collection will be tracked. Ex: $('#someElement')
+element : A string containing a CSS selector to track as a trigger point. Only the first element matching this selector will be tracked. Ex: ".class123 > div > span"
+(This will catch dynamic elements which don't exist on pageload, but is slower)
+}

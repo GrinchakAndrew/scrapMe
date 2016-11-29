@@ -1,0 +1,69 @@
+
+<table style="width: 94.5%; border: 2px; margin-left: auto; margin-right: auto; font-variant: small-caps; font-size: 16px;">
+    <tbody>
+        <tr>
+            <th style="font-weight: normal; border: 1px solid white; text-align: center; background-color: #6690bc; color: #ffffff; padding: 1px; font-family: arial, helvetica, sans-serif; vertical-align: middle;" valign="middle">Terminology</th>
+        </tr>
+        <tr></tr>
+    </tbody>
+</table>
+<div onclick="" style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; background-color: #dfe8f8; color: #333399; width: 94%; text-align: center;"><a style="font-variant: small-caps; font-size: 16px;">Elements</a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;">Elements: Maxyboxes, Examples</span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 94%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: justify; padding-left: 30px;">
+                    <ul style="list-style-type: square;">
+                        <li style="margin-bottom: 10px;"><span style="color: #000000;"><span>
+Elements are the identifiable areas (both physical and logical) of a given website targeted by alternative content \ behavior for testing, sometimes referred to as a 'Maxybox', although the latter is obsolete and no longer in use officially. Examples of an Element include a landing page image, banners, or a copy of a Call-to-Action button that is to be tested. By logical website area we understand behavior of the tested website area. An Element may be a logical unit rather than a physical website area: in this case, Element would be responsible for changing behavior of a website area rather than replacing its assets.
+</span></span>
+                        </li>
+                        </span>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+</div>
+
+<div onclick="" style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; background-color: #dfe8f8; color: #333399; width: 94%; text-align: center;"><a style="font-variant: small-caps; font-size: 16px;">Alternative Variant</a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;"></span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 94%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: justify; padding-left: 30px;">
+                    <ul style="list-style-type: square;">
+                        <li style="margin-bottom: 10px;"><span style="color: #000000;"><span>Alternative Variant is the HTML alternative content that may contain JavaScript and CSS, served onto a certain area (Element) onsite.</span></span>
+                        </li>
+                        </span>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+</div>
+
+<div onclick="" style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; background-color: #dfe8f8; color: #333399; width: 94%; text-align: center;"><a style="font-variant: small-caps; font-size: 16px;">'Default' Variant</a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;"></span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 94%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: justify; padding-left: 30px;">
+                    <ul style="list-style-type: square;">
+                        <li style="margin-bottom: 10px;"><span style="color: #000000;"><span>
+Default Variant is the original Client-defined HTML content on the website, that is subject for alternating, according to a given campaign's logic, expressly stated in specifications.
+</span></span>
+                        </li>
+                        </span>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+</div>

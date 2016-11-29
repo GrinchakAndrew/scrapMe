@@ -1,0 +1,53 @@
+if (!mmcore.snippets) {
+    mmcore.snippets = {}
+}
+
+mmcore.snippets.iFrameTracking = {
+    iFrameHovered: false,
+    actionAttrs: ['Click-through', '1'],
+    requestIsActive: true,
+    click: function (sameDomain) {
+        if (this.iFrameHovered) {
+            if (sameDomain) {
+                mmcore.$Action.apply(mmcore, this.actionAttrs);
+            } else {
+                this.startTime = (new Date()).valueOf();
+                mmcore._async = true;
+                mmcore.SetPageID('events');
+                mmcore.SetAction.apply(mmcore, this.actionAttrs);
+                mmcore.CGRequest(function () {
+                    this.requestIsActive = false;
+                });
+
+                while (this.requestIsActive && (new Date()).valueOf() - this.startTime < 1000) {
+                    // do nothing  
+                }
+            }
+        }
+    },
+    on: function (event, target, handler) {
+        if (typeof target.attachEvent != 'undefined') {
+            target.attachEvent('on' + event, handler);
+        } else if (typeof target.addEventListener != 'undefined') {
+            target.addEventListener(event, handler, false);
+        }
+    },
+    attachIFrameTracking: function (target) {
+        this.on('mouseover', target, function () {
+            mmcore.snippets.iFrameTracking.iFrameHovered = true;
+        });
+        this.on('mouseout', target, function () {
+            mmcore.snippets.iFrameTracking.iFrameHovered = false;
+        });
+    },
+    init: function () {
+        window.onbeforeunload = function (e) {
+            mmcore.snippets.iFrameTracking.click(true);
+        }
+    }
+}
+
+mmcore.snippets.iFrameTracking.init();
+mmcore.AddDocLoadHandler(function () {
+    mmcore.snippets.iFrameTracking.attachIFrameTracking( /* target iFrame node */ );
+});

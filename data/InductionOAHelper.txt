@@ -1,0 +1,479 @@
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    
+	<div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;   vertical-align: middle;">GTS Task Management Helper</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">General Information</div>
+    </div>
+	
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;">About Open Air: to Newcomers</span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p>
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;
+ ">Maxymiser applies 
+                        <a href="http://www.openair.com/">Open Air</a> for tracking tasks against working time.</span> </p>
+                        <p>
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;
+ ">If you do not have access to the system, please address 
+                        <strong>GTS </strong></span><span style="color: #000000;"><strong>Production Analyst</strong>, 
+                        <em>Natalya Netudihata</em>.</span> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div>
+    <div style="  margin-left: auto; margin-right: auto; border: 1px solid #6690BC; padding-top: 10pt; padding-bottom: 10pt; color: white; width: 98%; text-align: center;"><a style="font-size: 16px;"><span style="color: #333399;">List of Tasks for Tracking in OpenAir for Internal Projects (Non-Client Tasks)</span></a>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%;">
+        <p></p>
+        <table style="margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left;">
+                        <div style="height: 20px;">
+                            <br />Please note, Internal Project Tasks are Available to All the Maxymiser Employees throughout:
+                            <p></p>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div style="height: 20px;"></div>
+                        <table border="0 none;" style="background-color:#EEE; color: black; margin: 0 auto; width: 80%;">
+                            <tbody>
+                                <tr>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">New Task<br /></span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Project</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">EMEA \ US Old Template</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle; border: 0 none;">Business travel</td>
+                                    <td rowspan="14" style="border: 0 none; text-align: center; vertical-align: middle; background-color: #EEE;"><span style="font-size: 10pt;   color: #000000;">Internal</span>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle; border: 0 none;">- Business travel</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle; border: 0 none; ">Meetings / calls</td>
+                                    <td style="text-align: center; vertical-align: middle; border: 0 none;">
+                                        <p>- GTS Meetings &amp; Calls</p>
+                                        <p>- CS Meetings &amp; Calls</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" style="text-align: center; vertical-align: middle; border: 0 none; ">Induction</td>
+                                    <td colspan="1" style="text-align: center; vertical-align: middle; border: 0 none; ">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle; border: 0 none;">No work avail</td>
+                                    <td style="color: black; text-align: center; vertical-align: middle; border: 0 none;">
+                                        <p>-</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none; ">Int Training</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;">Self education</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;"><span style="  text-align: center;">- Self education</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;">Comms/Email</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;  ">- Communication/Email</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;  ">Reporting</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">- Monitoring &amp; reporting</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">Recruitment</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">
+                                        <p>- Recruiting/Interview</p>
+                                        <p>- Test task/Job Specs Maintenance</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;">Team Mgmt.</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;  ">
+                                        <p>- GTS Management Time</p>
+                                        <p>- CS Management Time</p>
+                                        <p>- Objectives settings</p>
+                                        <p>- Internal design work</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">Mentoring</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">- Mentoring</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">Appraisals</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">- Appraisals</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">Personal admin</td>
+                                    <td style="text-align: center; vertical-align: middle;border: 0 none;   ">
+                                        <p>- Private Entrepreneurship Maintenance</p>
+                                        <p>- Admin activity</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; border: 0 none;  ">Efficiency Improv-t</td>
+                                    <td style="text-align: center; border: 0 none;  "><span style="text-align: center; color: black;">- Work on efficiency improvement</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="height: 20px;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+
+
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; padding-top: 10px; padding-bottom: 10px; color: white; width: 98%; text-align: center;"><a style="font-size: 16px;"><span style="color: #333399;">List of Tasks for Tracking in OpenAir for JS Devs</span></a>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%;">
+        <p></p>
+        <table style="  margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left;">
+                        <div style="height: 20px;"></div>
+                        <table border="0 none;" style=" background-color:#EEE; margin: 0 auto;width: 80%;">
+                            <tbody>
+                                <tr>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Obsolete Template Activity</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Project</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Old Template Task Name</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Newer Template Task Name</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" style="border: 0 none; text-align: center; vertical-align: middle; background-color: #EEE;"><span style="font-size: 10pt;   color: #000000;">Campaign coding</span>
+                                    </td>
+                                    <td rowspan="16" style="border: 0 none; text-align: center; vertical-align: middle;"><span style="font-size: 10pt;   color: #000000;">Campaign</span>
+                                    </td>
+                                    <td style="text-align: center;border: 0 none;"><span style="color: #000000;">Campaign Coding &amp; Set Up</span>
+                                    </td>
+                                    <td rowspan="4" style="border: 0 none; text-align: center; vertical-align: middle; color: black;   ">Development</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; border: 0 none; "><span style="font-size: 12.8000001907349px; text-align: center; color: black;   ">Development after QA</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; border: 0 none;"><span style="color: #000000;   font-size: 10pt; text-align: center;   ">Conclude Campaign &amp; Serve Winners</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="5" style="border: 0 none; text-align: center; vertical-align: middle; background-color: #EEE;"><span style="color: #000000;   font-size: 10pt; text-align: center;">Campaign updates \ fixes</span>
+                                    </td>
+                                    <td style="text-align: center;border: 0 none;"><span style="color: #000000;   font-size: 10pt; text-align: center;   ">Post-Live Fixes</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 2px; text-align: center;border: 0 none; "><span style="font-size: 10pt;   color: #000000;">Pre-Live Billable Updates</span>
+                                    </td>
+                                    <td rowspan="4" style="border: 0 none; padding: 2px; text-align: center; vertical-align: middle; color: black;   ">Any task from new WBS
+                                        <br />according to Job Role</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;border: 0 none;"><span style="font-size: 10pt;   color: #000000;"> </span><span style="font-size: 10pt;   color: #000000;">Post-Live <span style="color: #000000;   font-size: 10pt; text-align: center;">Billable </span>Updates</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;border: 0 none; "><span style="color: #000000;   font-size: 10pt; text-align: center;">Pre-Live Non-Billable Updates</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;border: 0 none;"><span style="color: #000000;   font-size: 10pt; text-align: center;">Post-Live Non-</span><span style="color: #000000;   font-size: 10pt; text-align: center;">Billable </span><span style="color: #000000;   font-size: 10pt; text-align: center;">Updates</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; background-color: #EEE;"><span style="font-size: 10pt;   color: #000000;">Spec evaluation / approval</span>
+                                    </td>
+                                    <td style="border: 0 none; padding: 2px; text-align: center;   "><span style="font-size: 10pt;   color: #000000;">Spec Evaluation</span>
+                                    </td>
+                                    <td rowspan="2" style="border: 0 none; padding: 2px; text-align: center; vertical-align: middle; color: black;   ">Spec</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; background-color: #EEE;"><span style="font-size: 10pt;   color: #000000;">Draft evaluation / approval</span>
+                                    </td>
+                                    <td style="border: 0 none; padding: 2px; text-align: center;   "><span style="color: #000000; font-size: 10pt;  ">Draft Spec Evaluation</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6" style="border: 0 none; padding: 2px; text-align: center; vertical-align: middle; background-color: #EEE;"><span style="color: #000000;   text-align: center;">Automated Testing</span>
+                                    </td>
+                                    <td style="border: 0 none; padding: 2px; text-align: center;   "><span style="color: #000000;   text-align: center;   ">Dev Auto Scripting</span>
+                                    </td>
+                                    <td rowspan="6" style="border: 0 none; color: black; text-align: center; vertical-align: middle;   ">Auto-testing</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; color: black;   ">QA Auto Verification and Scripting</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; color: black;   ">Pre-Live Billable Auto testing</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; color: black;   ">Pre-Live Non-Billable Auto testing</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; color: black;   ">Post-Live Billable Auto testing</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 0 none; padding: 2px; text-align: center; color: black;   ">Post-Live Non-Billable Auto testing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="height: 20px;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+    <div style="  margin-left: auto; margin-right: auto; border: 1px solid #6690BC; padding-top: 10px; padding-bottom: 10px; color: white; width: 98%; text-align: center;"><a style="font-size: 16px;"><span style="color: #333399;">List of Tasks for Tracking in OpenAir for Quality Controllers</span></a>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%;">
+        <p></p>
+        <table style="margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left;">
+                        <div style="height: 20px;"></div>
+                        <table border="0 none;" style="background-color: #EEE; margin: 0 auto; width: 80%;">
+                            <tbody>
+                                <tr>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Obsolete Template Activity</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Project</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Old Template Task Name</span>
+                                    </th>
+                                    <th style="border: 1px solid white; text-align: center;    color: #000; padding: 2px;" valign="middle"><span style="font-size: 10pt;">Newer Template Task Name</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2" style="text-align: center; vertical-align: middle; background-color: #EEE;"><span style="color: #000000;   text-align: center;">Campaign Quality Assurance</span>
+                                    </td>
+                                    <td rowspan="8" style="text-align: center; vertical-align: middle;"><span style="font-size: 10pt;   color: #000000;">Campaign</span>
+                                    </td>
+                                    <td rowspan="2" style="text-align: center; vertical-align: middle;    color: black;">Campaign QA</td>
+                                    <td style="color: black; text-align: center; vertical-align: middle;   ">
+                                        <p>Campaign QA \ QA Testing</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;   "><span style="text-align: center; color: black;">Campaign QA \ QA X-check</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6" style="text-align: center; vertical-align: middle; background-color: #EEE;"><span style="color: #000000;   font-size: 10pt; text-align: center;">Automated Testing</span><span style="font-size: 10pt;   color: #000000;"><br /></span>
+                                    </td>
+                                    <td style="padding: 2px; text-align: center;    color: black;">Dev Auto Scripting</td>
+                                    <td rowspan="6" style="text-align: center; vertical-align: middle; color: black;   ">Auto-testing</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;   "><span style="color: #000000;   text-align: center;   ">QA Auto Verification and Scripting</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;   "><span style="font-size: 10pt;   color: #000000;">Pre-Live Billable Auto testing</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;   "><span style="color: #000000;   font-size: 10pt; text-align: center;">Pre-Live Non-Billable Auto testing</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;   "><span style="color: #000000;   font-size: 10pt; text-align: center;">Post-Live Billable Auto testing</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 2px; text-align: center;   "><span style="font-size: 10pt; color: #000000;">Post-Live Non-Billable Auto testing</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="height: 20px;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; color: white; width: 98%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+        <a>
+            <span style="color: #ffffff; font-size: 12pt;"> 
+            <span style="color: #333399;">OpenAir Useful Screenshots</span> </span>
+        </a>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%;">
+        <p>
+        </p>
+        <p style="margin-left: 30px;">
+            <span style="color: #000000; font-size: 10pt;">      <span style="color: #339;">Click Images to Enlarge</span></span>
+        </p>
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (1) When  OpenAir opens in your browser, follow the instructions laid out in the screenshots:</span> </p>
+        <p>
+            <span style="color: #000000; font-size: 10pt;
+ "> 
+            <br/></span> </p>
+        <p style="text-align: center; font-size: 10pt;
+ ">
+            <span style="color: #800000;"> 
+            <span style="color: #000000;">      (2) </span><span style="color: #000000;">The following screenshot depicts logging in as Maxymiser with your User ID credentials, i.e. Maxymiser internal Email</span>
+            <br/> </span>
+        </p>
+        <p>
+              &#160;</p>
+        <p style="text-align: center; font-size: 10pt;
+ ">
+            <span style="color: #000000;">     (3) </span><span style="color: #000000;">OpenAir should open to your dashboard, as shown on the screenshot below:</span> </p>
+        <p>
+             &#160;</p>
+        <p style="text-align: center; font-size: 10pt;
+ ">
+            <span style="color: #000000;">     (4) 
+            <span style="color: #000000; font-size: 10pt;
+ ">Checking &#39;Timesheet&#39; options in OpenAir:</span></span>
+        </p>
+         
+        <p style="text-align: center; ">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (5) 
+            <span style="color: #000000; font-size: 10pt;
+ ">Making a new &#39;Timesheet&#39; in OpenAir:</span></span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (6) 
+            <span style="color: #000000; font-size: 10pt;
+ ">Adding a new Timesheet in OpenAir:</span></span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (7) 
+            <span style="color: #000000; font-size: 10pt;
+ ">Adding a new Timesheet in OpenAir:</span>
+            <br/> </span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (8)  Locating the 'Projects' option in the OpenAir menu: 
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (9) Selecting 'All' the Projects dropdown filter, as shown:
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (10) Selecting 'Worksheet' under 'Phases/Tasks':
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (11) Pressing 'Editing' option to add oneself to the list of Project's Assigneess, as shown
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (12) Assigning oneself with timing percentage against planned hrs. for the project, as shown
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+
+         
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (13) Saving your Assignment
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (14) Additional data on Filling the Timesheets
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (15) Additional data on Filling the Timesheets
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+
+
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (16) Additional data on Filling the Timesheets
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+
+
+        <p style="text-align: center;">
+            <span style="color: #000000; font-size: 10pt;
+ ">     (17) Additional data on Filling the Timesheets
+            <span style="color: #000000; font-size: 10pt;
+ ">:</span>
+            <br/> </span>
+        </p>
+         
+
+    </div>
+    <div></div>
+</div>

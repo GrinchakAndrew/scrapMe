@@ -1,0 +1,119 @@
+/** 
+ * The snippet implements the event-listener on mmcore level (within mmcore.js context)
+ * You can add listener(s) on any custom event (function mmcore.on)
+ * and trigger the event by calling "mmcore.trigger" function
+ * NB! if some custom event has been triggered at least once before addition of  a new listener, this will lead to the new listener's execution
+ */
+;
+(function () {
+    /** 
+     * mmcore.snippets declaration against the currently declared snippet getting re-written:
+     */
+    mmcore.snippets = mmcore.snippets || {};
+    mmcore.snippets.EventManager = function () {
+
+        var eventPool = {}, // the pool of all the triggered events.  
+            eventListeners = {}; // the list of all the event-listeners. Event-listeners will be called one by one when trigger is called.  
+        /** 
+         * @function trigger
+         * @describe triggers execution of all the event-listeners by the 'event_type' event, passing the 'event_data' to the event-listeners.
+         * The 'callback' executes after all the event-listeners have fired.
+         * @param {String} 'event_type' - the event to be triggered
+         * @param {Object|string} 'event_data' - the data which is passed to event-listeners when the trigger function fires
+         *        ( e.g., data collection logic for Action Tracking event-listeners).
+         * @param {Function} 'callback' - the callback, which fires after the trigger executes all the event-listeneres of the 'event_type'.
+         *        NB! This callback will also be called once when a new event-listener of the type is added
+         */
+        this.trigger = function (event_type, event_data, callback) {
+
+            eventPool[event_type] = {
+                event_data: event_data,
+                callback: callback
+            };
+
+            eventListeners[event_type] = eventListeners[event_type] || [];
+
+
+            for (var i = 0; i < eventListeners[event_type].length; i++) {
+                try {
+                    eventListeners[event_type][i](event_data);
+                } catch (e) {
+                    mmcore.EH && mmcore.EH(e)
+                }
+            }
+            callback && callback();
+        };
+        /** 
+         * @function on
+         * @description Adds listener (i.e., 'callback') for the event of the given 'event_type'.
+         * When an 'event_type' has been triggered, its listener (i.e., 'callback')
+         * will be executed with the last stored trigger data from the 'eventPool';
+         * Also the trigger's callback will be executed, if it is the first invoction of 'on' after the triggering
+         */
+
+        this.on = function (event_type, callback) {
+            var lastData = eventPool[event_type];
+            if (lastData) {
+                try {
+                    callback(lastData.event_data); //execution of 'callback'  
+                } catch (e) {
+                    mmcore.EH && mmcore.EH(e)
+                }
+                setTimeout(function () {
+                    lastData.callback && lastData.callback();
+                    lastData.callback = null;
+                }, 0);
+            }
+            eventListeners[event_type] = eventListeners[event_type] || [];
+            eventListeners[event_type].push(callback);
+        };
+    };
+    mmcore.snippets.EventManager.call(mmcore)
+}());
+
+/*Example 01:  */
+//Campign script 01  
+mmcore.on('ready', function () {
+    console.log('hide area 01');
+});
+/*Wait and show content for campaign 01*/
+
+//Campign script 02  
+mmcore.on('ready', function () {
+    console.log('hide area 02');
+});
+/*Wait and show content for campaign 02*/
+
+/*Site lvl script - checker*/
+/*Some specific campaign-dependent condition from the level of Site to be triggered:*/
+
+/*if(some condition){}*/
+mmcore.trigger('ready', {}, function () {
+    mmcore._async = true;
+    mmcore.SetPageID('PageID')
+    //mmcore.CGRequest();  
+    console.log('mmcore.CGRequest')
+});
+
+/*Example 02:*/
+/*Site lvl script - checker*/
+/*Some specific campaign-dependent condition from the level of Site to be triggered:  */
+
+mmcore.trigger('track', {
+    value: '123'
+}, function () {
+    mmcore._async = true;
+    //mmcore.CGRequest();  
+    console.log('mmcore.CGRequest')
+});
+
+/*Site script 01*/
+mmcore.on('track', function (data) {
+    mmcore.SetAction('Action 01', data.value)
+    console.log('track Action 01', data.value);
+});
+/*Site script 02*/
+mmcore.on('track', function (data) {
+    mmcore.SetAction('Action 02', data.value)
+    console.log('track Action 02', data.value);
+});

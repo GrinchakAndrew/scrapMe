@@ -1,0 +1,38 @@
+var setClickAction = function (targetLink, name, value, attr) {
+    var bind = function (node, type, fn) {
+        var listener = function (event) {
+            var e = event || window.event;
+            if (fn.call(node, e) === false) {
+                if (e.preventDefault) {
+                    e.preventDefault()
+                } else {
+                    e.returnValue = false;
+                }
+            }
+        };
+        if (node.addEventListener) {
+            node.addEventListener(type, listener, false);
+        } else if (node.attachEvent) {
+            node.attachEvent("on" + type, listener);
+        }
+    };
+    var request = function (callback) {
+        var willExecuted = true;
+        var callbackExecutor = function () {
+            willExecuted && callback();
+            willExecuted = false;
+        };
+        setTimeout(callbackExecutor, 2000);
+        mmcore._async = true;
+        mmcore.SetPageID('mmevents');
+        mmcore.CGRequest(callbackExecutor);
+    };
+    bind(targetLink, 'click', function () {
+        var flag = true;
+        mmcore.$Action(name, value, attr);
+        request(function () {
+            window.location.assign(targetLink.href);
+        });
+        return false;
+    })
+};

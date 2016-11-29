@@ -1,0 +1,659 @@
+<script>
+    function Config() {
+        var config = {
+            altCol: {
+                'misRequest1': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': " /data/images/misRequestOne.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'misRequest2': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': " /data/images/misRequest2.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'misRequest3': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': " /data/images/misRequest3.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'misRequest4': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': " /data/images/misRequest4.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'misRequest4': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': " /data/images/misRequest5.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                }
+            },
+
+           getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                }else if (!arguments.length) {
+					return Object.keys(config.altCol);
+				} else if (alt && src) {
+					return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+				} else if (alt && width) {
+					return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+				} else if (alt && enlargeToWidth) {
+					return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+				} else if (alt && left) {
+					return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+				}
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.5'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+                        var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+
+                    arrowPress: function(e) {
+                        var event = e || window.event,
+                            handledImageContainer = document.querySelector('#handledImageContainer'),
+                            leftDefaultValue = _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1),
+                            imageParentNodeEnlargedWidth = _g(handledImageContainer.querySelector('img').alt, '', '', '', 1);
+
+                        switch (event.keyCode.toString()) {
+
+                            case '38':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '40':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '37' || '':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '39':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left =
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '48':
+                                {
+                                    if (event.ctrlKey) {
+                                        parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth ||
+                                            parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ?
+                                            handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%' : '';
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ?
+                                            handledImageContainer.style.left = leftDefaultValue + '%' : '';
+                                    }
+                                    break;
+                                }
+                            case '187':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                    }
+                                    break;
+                                }
+
+                            case '189':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                    }
+                                    break;
+                                }
+                        }
+                    },
+
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+
+                                var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+                                _u(window, eventType, _config.handler);
+
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                            };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': _g(targetEl.alt, '', '', '', '', 1) + '%'
+                                    }]),
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'background-image': "url('https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png')"
+                                    }, {
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'background-repeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '40px'
+                                    }, {
+                                        'padding-left': '1%'
+                                    }, {
+                                        'background-size': '100% 100%'
+                                    }, {
+                                        'background-position-x': '-4px'
+                                    }, {
+                                        'background-position-y': '-7px'
+                                    }], ''),
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+
+                                if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+
+                                if (!_g(targetEl.alt)['arrowPress']) {
+                                    s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+                                    _e(window, 'keydown', _config.arrowPress);
+                                }
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+
+    var config = new Config();
+    if (config.g()[0]) {
+        config.g().forEach(function(i) {
+            var img = new Image(),
+            parent = document.querySelector('#' + i);
+            img.alt = i;
+            img.src = config.g(i, '', 1);
+            img.style.cursor = 'pointer';
+            img.style.width = config.g(i, '', '', 1);
+            parent.appendChild(img);
+        });
+
+        config.e(document, 'click', function(e) {
+            var event = e || event,
+                target = event.target || event.srcElement;
+            if ((target.tagName === 'IMG' && config.g(target.alt))) {
+                if (!config.g(target.alt, 1)) {
+                    var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                    config.s(target.alt, '', _config);
+                }
+                if (config.g(target.alt, 1)) {
+                    config.g(target.alt, 1).o();
+                }
+            }
+        });
+    }
+    config.e(document, 'click', function(e) {
+        var _config = {
+                targetAttributes: {
+                    _title: [{
+                        "Back to 'Necessary Toolbox'": '(1) Induction: Toolbox for Front-end JavaScript Dev'
+                    }]
+                }
+            },
+            event = e || event,
+            _target = event.target || event.srcElement;
+        _config.targetAttributes._title.forEach(function(i, j) {
+            Object.keys(i).forEach(function(_i) {
+                if (_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+                    var keyVal = _config['targetAttributes']['_title'][j][_i];
+                    Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                        function(q) {
+                            var span = q.querySelector('span'),
+                                spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                            if (spanText === keyVal) {
+                                q.click ? q.click() : $(q).trigger('click');
+                            }
+                        });
+                }
+            })
+        });
+    });
+
+    var onFocus = function() {
+        var ta = document.getElementsByTagName('textarea')[0];
+        ta.select();
+    }
+</script>
+</script>
+
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px; vertical-align: middle;">System Administration Requests</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">'ZenDesk' Walk-through</div>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;"></span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p style="margin: 0; padding-top: 15pt;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+								<strong>Help Desk:</strong><br/>
+<p style="line-height: 1.5em; color: #000000; padding: 10pt 0pt 10pt 0; font-size: 10pt;">The Help Desk is information and assistance resource towards troubleshooting hardware \ software technicalities or handling requests. 
+The purpose of the Help Desk is covering all office computerized paraphernalia support/services as a single point of care. 
+Requests should be made in English.</p></span>
+                        </p>
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+								<strong>Making a Request:</strong><br/>
+<p style="line-height: 1.5em; color: #000000; padding: 10pt 0pt 10pt 0; font-size: 10pt;">
+Send an <a href="mailto:ua-helpdesk@maxymiser.zendesk.com">email<a/> from your corporate email. Fill in the 'Subject' field and describe your issue in the body of the letter:
+</p></span>
+                        </p>
+						<span style="color: #6690bc; line-height: 1.6px;">Click images to enlarge:</span>
+                        <div style="text-align: center;" id="misRequest1">
+                        </div>
+
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+								<strong>Automatic Response:</strong><br/>
+<p style="line-height: 1.5em; color: #000000; padding: 10pt 0 0 0; font-size: 10pt;">
+An automatic response with ticket's unique ID, related links, comments and additional information on the ticket (assigned by, type and priority) will be noted, as shown on the screenshot below: 
+</p></span>
+                        </p>
+
+                        <div style="text-align: center;" id="misRequest2">
+                        </div>
+
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+								<strong>Ticket Priority:</strong><br/>
+<p style="line-height: 1.5em; color: #000000; padding: 10pt 0pt 10pt 0; font-size: 10pt;">
+By default, the priority is set to 'Normal'. 
+In case of urgent issue(s), please indicate 'Urgent' in the body of your request, providing the reasons for the urgency, as shown on the screenshot below: 
+</p></span>
+                        </p>
+                        <div style="margin-bottom: 10pt; text-align: center;" id="misRequest3">
+                        </div>
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+<p style="line-height: 1.5em; color: #000000;font-size: 10pt;">
+The priority affects response timeliness. 
+If your request relates to hardware/software upgrade, your request should be CC-ed to your Team Lead for the purpose of approval / confirmation of the necessity of the upgrade:
+</p></span>
+                        </p>
+                        <div style="margin-bottom: 10pt; text-align: center;" id="misRequest4">
+                        </div>
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+<p style="line-height: 1.5em; color: #000000;font-size: 10pt;">
+You will be notified on every ticket update. You can add comments by replying to the notification: 
+</p></span>
+                        </p>
+                        <div style="text-align: center;" id="misRequest5">
+                        </div>
+                        <p style="margin: 0;">
+                            <span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+								<strong>Time SLAs:</strong><br/>
+<p style="line-height: 1.5em; color: #000000; padding: 0; font-size: 10pt;">
+<div style="margin-left: auto; margin-right: auto; width: 98%; text-align: center;"><span style="color: #000; font-size: 12pt; font-weight: bold;"><span>Time to first response by priority:</span>
+                            </span>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; padding: 10pt; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;"></span>
+        <table style="border: 2px solid #EEE; margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: justify;">
+                        <table style="border-collapse: collapse; border: 1px solid #fff; width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>#</strong>
+                                    </th>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>Status</strong>
+                                    </th>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>Timing</strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center;">1</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">
+                                        <p>Urgent</p>
+                                    </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 1 business hour</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">2</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">High</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 3 business hours</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">3</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">Normal </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 1 business day</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">4</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">Low
+                                    </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">
+                                        During 1-3 business day
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="padding-top: 5pt; border-bottom: 1px solid #EEE; border-top: 1px solid #EEE; margin-left: auto; margin-right: auto; width: 99%; text-align: center;"><span style="color: #000; font-size: 12pt; font-weight: bold;"><span>Time to resolve by priority:</span>
+                            </span>
+                        </div>
+                        <table style="border-collapse: collapse; border: 1px solid #fff; width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>#</strong>
+                                    </th>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>Status</strong>
+                                    </th>
+                                    <th style="border-right: 1px solid #FFF; text-align: center; background-color: #EEE; color: #000; padding: 2pt;" valign="middle"><strong>Timing</strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 7pt; text-align: center;">1</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding:10pt; text-align: center;">
+                                        <p>Urgent</p>
+                                    </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 3 - 5 business hours</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">2</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">High</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 1 - 3 business days</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">3</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">Normal </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">During 3 - 10 business days</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 1px solid #EEE; padding: 5pt; text-align: center; vertical-align: middle;">4</td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #EEE; padding: 5pt; text-align: center;">Low
+                                    </td>
+                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #fff; padding: 5pt; text-align: center;">
+                                        During 10 - 15 business days
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+    </p>
+    </span>
+    </p>
+    </td>
+    </tr>
+    <tr>
+        <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+            <p style="font-size: 10pt">
+                <a href="javascript:;" _title="Back to 'Necessary Toolbox'">Back to 'Necessary Toolbox' Beginning</a>
+                </span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    <p>
+    </p>
+</div>

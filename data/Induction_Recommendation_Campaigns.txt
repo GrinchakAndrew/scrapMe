@@ -1,0 +1,64 @@
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;   vertical-align: middle;">Recommendation Campaigns</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Basics of Recommendation Campaigns</div>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;">Reports Intro</span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">MaxRECOMMEND employs 'visitor affinity' model, which is a product recommendation engine used to determine, which products to recommend to a visitor from a group of relevant items by certain affinity criterion. Among the affinity criteria are the following ones:</span></p>
+						
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+							<ul style='line-height: 1.5em; color: #000000; font-size: 10pt; margin-top: 10px; list-style-type: none;'>
+								<li>1.	'Bought This - Bought That'</li>
+								<li>2.	'Viewed This Viewed That'</li>
+								<li>3.	'Viewed This Bought That'</li>
+								<li>4.	'Most Viewed' - 'Most Bought' ratings;</li>
+								<li>5.	'Last Viewed' that uses 5 most recent ratings in a cookie;</li>
+								<li>6.	'Rated This Rated That' </li>
+								<li>7.	'Add Product to Basket', and some other criteria also. </li>
+							</ul>
+						</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">The system of collecting 'ratings' or 'preferences' for a given product is part of recommendation logic: inventory file of products is uploaded to the system to incrementally gather products ratings over a certain period of time.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Item affinity identifies items to present to a visitor based on models such as, 'visitors who viewed this bought that' or 'visitors who bought this also bought that'.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Visitor affinity looks at a visitor's product interest compared with other visitors and recommends products based on visitors with similar interests.</span></p>
+			   </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div> 
+	<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;">Combining Testing with Recommendation</span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">A/B and Multivariate Testing can be combined with MaxRECOMMEND campaigns towards testing recommendations and presenting recommendations (e.g graphic design, layout and number of recommendations).</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Different recommendation models can be tested with different Pages. Variations of recommendations and placements on a page may be tested to determine which combination yields the best engagement.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">An example is by displaying product recommendations throughout the website, such as the home page, category pages, product pages, basket pages, or on final checkout.</span></p>
+			   </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div> 
+	
+ </div>

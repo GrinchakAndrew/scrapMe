@@ -1,0 +1,96 @@
+/*
+This snippet will allow you to attach event listeners to ajax requests before and after the response is received. 
+It has no library dependencies.
+
+If the page is using jQuery to do ajax requests, you should not use this script. 
+It is safer to use jQuery's existing ajaxStart and ajaxComplete events instead.
+
+Functions:
+mmcore.addPreAjaxListener(match, handler)
+- adds an event listener before an ajax request is sent
+ 
+mmcore.addPostAjaxListener(match, hander)
+- adds an event listener after an ajax response is recieved
+ 
+Parameters:
+match = A string or regular expression representing a URL to listen for.
+handler = A function to run.
+*/
+;
+(function () {
+    if (mmcore._preAjaxListeners) return;
+
+    mmcore._preAjaxListeners = [];
+    mmcore._postAjaxListeners = [];
+    mmcore._fireAjaxEvents = function (flag, href) {
+        if (!href) return;
+        if (flag == 'pre')
+            var arr = mmcore._preAjaxListeners;
+        else if (flag == 'post')
+            var arr = mmcore._postAjaxListeners;
+        else
+            return;
+        for (var i = 0, l = arr.length; i < l; i++) {
+            var x = arr[i];
+            if (typeof x.match == 'string' && href == x.match)
+                x.handler();
+            else if (x.match.test && x.match.test(href))
+                x.handler();
+        }
+    };
+
+    mmcore.addPreAjaxListener = function (match, handler) {
+        mmcore._preAjaxListeners.push({
+            match: match,
+            handler: handler
+        });
+    };
+
+    mmcore.addPostAjaxListener = function (match, handler) {
+        mmcore._postAjaxListeners.push({
+            match: match,
+            handler: handler
+        });
+    };
+
+    XMLHttpRequest.prototype.open = (function (orig) {
+        return function (a, b, c) {
+            this._mmHref = b;
+            return orig.apply(this, arguments);
+        };
+    })(XMLHttpRequest.prototype.open);
+
+    XMLHttpRequest.prototype.send = (function (orig) {
+        return function () {
+            mmcore._fireAjaxEvents('pre', this._mmHref);
+            if (!/MSIE/.test(navigator.userAgent)) {
+                this.addEventListener("loadend", function () {
+                    mmcore._fireAjaxEvents('post', this._mmHref);
+                }, false);
+            } else {
+                var xhr = this,
+                    waiter = setInterval(function () {
+                        if (xhr.readyState && xhr.readyState == 4) {
+                            mmcore._fireAjaxEvents('post', xhr._mmHref);
+                            clearInterval(waiter);
+                        }
+                    }, 50);
+            }
+            return orig.apply(this, arguments);
+        };
+    })(XMLHttpRequest.prototype.send);
+})();
+
+Example usage:
+
+mmcore.addPreAjaxListener(/some\/ajax\/searchPage.php/, function () {
+    // hide content before ajax update  
+    document.getElementById('testElement').style.visibility = 'hidden';
+});
+
+mmcore.addPostAjaxListener(/some\/ajax\/searchPage.php/, function () {
+    // change content and show after ajax complete  
+    var el = document.getElementById('testElement');
+    el.innerHTML = el.innerHTML.replace(/apple/, 'orange');
+    el.style.visibility = 'visible';
+});

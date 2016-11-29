@@ -1,0 +1,32 @@
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;   vertical-align: middle;">Terminology</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Assets</div>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;">Assets Defined</span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">By assets we understand images, banners, a Call-to-Action button or any pictorial or visual aids that are characterized by specific design or color that can be both static or dynamic.</span></p>						
+			   </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div> 
+ </div>

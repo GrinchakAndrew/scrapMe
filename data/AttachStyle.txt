@@ -1,0 +1,37 @@
+mmcore.AttachStyle = function (text) {
+    if (document.body) {
+        var style = document.createElement('style');
+        style.type = 'text/css';
+
+
+        if (/WebKit|MSIE/i.test(navigator.userAgent)) {
+            if (style.styleSheet) {
+                style.styleSheet.cssText = text;
+            } else {
+                style.innerText = text;
+            }
+        } else {
+            style.innerHTML = text;
+        }
+        document.getElementsByTagName('head')[0].appendChild(style);
+    } else {
+        document.write('<style type="text/css">' + text + '</style>');
+    }
+}
+/*Same function (compressed):*/
+mmcore.AttachStyle = function (b) {
+    var c = document;
+    if (c.body) {
+        var a = c.createElement("style");
+        a.type = "text/css";
+        if (/WebKit|MSIE/i.test(navigator.userAgent))
+            if (a.styleSheet) a.styleSheet.cssText = b;
+            else a.innerText = b;
+            else a.innerHTML = b;
+        c.getElementsByTagName("head")[0].appendChild(a)
+    } else c.write('<style type="text/css">' + b + '</style>')
+};
+
+/*How to use(example):*/
+var text = 'div.selection { padding: 10px }';
+mmcore.AttachStyle(text);

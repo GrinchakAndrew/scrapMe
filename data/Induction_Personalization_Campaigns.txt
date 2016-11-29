@@ -1,0 +1,48 @@
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;   vertical-align: middle;">Personalization Campaigns</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Basics of Personalization</div>
+    </div>
+	
+	<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <span style="text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;">Personalization Campaigns</span>
+        <table style="margin: 0px auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Personalization campaigns rely on Predictive Behavioral Targeting to project appropriate content to individual visitors on the basis of history of exhibited online behavior.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Usually, such parameters are taken into account towards predictive campaigning: category interest, frequency to the site, and <strong>SEO keywords</strong>.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Personalization campaigns usually have the following subtypes: MaxPREDICT, MaxRECOMMEND, and MaxSEGMENT.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">MaxPREDICT campaigns are based on a mathematical model that makes it possible to automate learning visitor profile by registering and gathering exhibited online preferences data.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">After the data have been collected - website content can be dynamically adjusted and personalized on the basis of visitor profile. Such dynamic approach to unique visitor profiling yields the highest Conversion Rates.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Another approach is targeting visitors by grouping them into segments, categorized by common specificity.</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">Such segmentation of visitors by their traits is the foundation of MaxSegmentation, another type of personalization campaigns, i.e. automated predictive campaigns. Visitors may be streamlined into various Segments by some of the online behavior archetypes:</span></p>
+						<p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+							<ul style="line-height: 1.5em; color: #000000; font-size: 10pt; margin-top: 10px; list-style-type: square;">
+								<li><b>Visitor Activity</b>, such as frequency to the website, current or past conversion actions;</li>
+								<li><b>Entry Criteria</b>, such as search provider, search keywords, date and time;</li>
+								<li><b>Session Behavior</b>, such as last navigation clicks, page views, form input, site search keywords;</li>
+								<li><b>Environmental Criteria</b>, such as IP address, geographical location, mobile device, browser type, operating system;</li>
+								<li><b>Customer History</b>, such as customer propensity for a next best product, customer value</li>
+							</ul>								
+						</span></p>						
+			   </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div> 
+	
+ </div>

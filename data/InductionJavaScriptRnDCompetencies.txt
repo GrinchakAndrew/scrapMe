@@ -1,0 +1,56 @@
+<div onclick="" style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; background-color: #dfe8f8; color: #339; width: 92%; text-align: center;"><a href="/" style="color: #339; font-variant: small-caps; font-size: 16px;" _jive_internal="true">R&amp;D: <span style="color: #333399; text-align: center; background-color: #dfe8f8;">JavaScript Front-end Developer</span></a></div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;">Aptitude Evaluation by Research and Development</span>
+<table style="border-collapse: collapse; border: 2px solid #fff; margin: 0 auto; width: 100%;">
+<tbody>
+<tr>
+<td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+<table border="1" style="border-collapse: collapse; border: 1px solid #A9A9F5; margin: 0px auto; width: 98%;">
+<tbody>
+<tr><th colspan="8" style="border: 1px solid #A9A9F5; font-variant: small-caps; text-align: center; background-color: #e3c6f2; color: #ffffff; padding: 2px;" valign="middle"><span style="color: #000000;"><strong>R&amp;D</strong></span></th></tr>
+<tr>
+<td style="width: 8%; text-align: center;"><span style="color: #000000; width: 15%;">Category</span></td>
+<td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Junior</strong></span></td>
+<td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>J2M</strong></span></td>
+<td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Middle</strong></span></td>
+<td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>M2S</strong></span></td>
+<td style="width: 23%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Senior</strong></span></td>
+<td style="width: 25%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Tech Lead</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Contribution</span></td>
+<td colspan="2" style="padding: 2px; text-align: left; vertical-align: top;">
+<p><span style="color: #000000;">(1) Learns known bug-list form common practices on a given Client.</span></p>
+<p><span style="color: #000000;">Follows team's knowledge base.<br /></span></p>
+</td>
+<td style="padding: 2px; text-align: left; vertical-align: middle;">
+<p><span style="color: #000000;">(1) Participates in discussions of known bugs and code optimization.</span></p>
+</td>
+<td><span style="color: #000000;">Creates entries to bug lists \ knowledge db for others.</span></td>
+<td colspan="2" style="padding: 2px; text-align: left; vertical-align: top;"><span style="color: #000000;">Monitors and approves \ disapproves suggested optimization methods or workarounds. Appoints staff members who are responsible for handling specific problems.</span></td>
+</tr>
+<tr>
+<td rowspan="2" style="background-color: #e8e8e8; text-align: center; vertical-align: middle;">
+<p></p>
+<p><span style="color: #000000;"><strong>Contribution: Induction</strong></span></p>
+<p><span style="color: #000000;"><strong>Specific Realization</strong><br /></span></p>
+</td>
+<td colspan="6" style="background-color: #e8e8e8; padding: 2px; text-align: center; vertical-align: top;">
+<p><span style="line-height: 1.5em; color: #ff0000; font-size: 12pt; background-color: #e8e8e8;">WIP (Work in Progress):</span></p>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="background-color: #e8e8e8; padding: 2px; text-align: left; vertical-align: top;">
+<p><span style="line-height: 1.5em; color: #ff0000; font-size: 12pt; background-color: #e8e8e8;">(1). Team mentor shows the local knowledge base and introduces the inductee to processes.</span></p>
+</td>
+<td colspan="4" style="background-color: #e8e8e8; padding: 2px; text-align: left; vertical-align: top;">
+<p><span style="color: #ff0000;">Team Lead evaluates contribution to local knowledge db, quality of content and applicability of solutions for further use in code optimization.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td colspan="3"></td>
+</tr>
+</tbody>
+</table>
+</div>

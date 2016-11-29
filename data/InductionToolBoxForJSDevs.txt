@@ -1,0 +1,633 @@
+<script>
+    function Config() {
+        var config = {
+            altCol: {
+                'WebDAVSettings1': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null, 
+					'src': " /data/images/WebDAVSettings1.png", 
+					'width' : '35%', 
+					'enlargeToWidth' : 45,
+					'left' : 30
+                },
+                'FurtherSettings1': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null, 
+					'src': " /data/images/FurtherSettings1.png",
+					'width' : '35%', 
+					'enlargeToWidth' : 45,
+					'left' : 30
+                },
+                'FurtherSettings2': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null, 
+					'src': " /data/images/FurtherSettings2.png",
+					'width' : '35%', 
+					'enlargeToWidth' : 45,
+					'left' : 30
+                },
+				
+                'WebDrive_Open': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null, 
+					'src': " /data/images/WebDrive_Open.png",
+					'width' : '20%',
+					'enlargeToWidth' : 25,
+					'left' : 40
+                },
+                'AddingRegkey4wd': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null, 
+					'src': " /data/images/AddingRegkey4wd.png",
+					'width' : '35%', 
+					'enlargeToWidth' : 45,
+					'left' : 30
+                }
+            },
+
+            getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                }else if (!arguments.length) {
+					return Object.keys(config.altCol);
+				} else if (alt && src) {
+					return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+				} else if (alt && width) {
+					return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+				} else if (alt && enlargeToWidth) {
+					return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+				} else if (alt && left) {
+					return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+				}
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.5'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+                        var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+					
+					arrowPress : function(e) {
+						var event = e || window.event, 
+							handledImageContainer = document.querySelector('#handledImageContainer'),
+							leftDefaultValue = _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1),
+							imageParentNodeEnlargedWidth = _g(handledImageContainer.querySelector('img').alt, '', '', '', 1);
+							
+						switch(event.keyCode.toString()) {
+						
+							case '38': { 
+							    handledImageContainer.style.top = 
+								parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%';
+								break;
+							}
+							
+							case '40': { 
+							    handledImageContainer.style.top = 
+								parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%';
+								break;
+							}
+							case '37' || '' : {
+								!handledImageContainer.style.left || 
+								parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ? 
+								handledImageContainer.style.left = leftDefaultValue +'%' : handledImageContainer.style.left;
+								handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+								break;
+							}
+							
+							case '39': {
+							    !handledImageContainer.style.left || 
+								parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ? 
+								handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+								handledImageContainer.style.left = 
+								parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+								break;
+							}
+							case '48': {
+								if(event.ctrlKey) {
+									parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth || 
+									parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ? 								 
+									handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%': '';
+									parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ? 
+									handledImageContainer.style.left = leftDefaultValue + '%' : '';
+								}
+								break;
+							}
+							case '187' : {
+								if(event.ctrlKey) {
+									handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+								}
+								break;
+							}
+							
+							case '189' : {
+								if(event.ctrlKey) {
+									handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+								}
+								break;
+							}
+						}
+					},
+					
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+							
+                                var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+								
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+								_u(window, eventType, _config.handler);
+								
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                            };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': _g(targetEl.alt, '', '', '', '', 1) +'%'
+                                    }]),
+									
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'backgroundRepeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '50px'
+                                    }, {
+                                        'top': '-15px'
+                                    }, {
+                                        'right': '-15px'
+                                    }, {
+                                        'backgroundSize': '100%'
+                                    }, {
+                                        'background': 'url(https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png)'
+                                    }], ''),
+									
+									
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+								
+								if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+								
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+								
+								if (!_g(targetEl.alt)['arrowPress']) {
+									s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+									_e(window, 'keydown', _config.arrowPress);
+								}
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+	
+    var config = new Config();
+		config.g().forEach(function(i) {
+			var img = new Image(), 
+				parent = document.querySelector('#' + i);
+				img.alt = i;
+				img.src = config.g(i, '', 1);
+				img.style.cursor = 'pointer';
+				img.style.width = config.g(i, '', '', 1);
+				parent.querySelector('p') ? parent.querySelector('p').appendChild(img) : null;
+		});
+		
+        config.e(document, 'click', function(e) {
+            var event = e || event,
+                target = event.target || event.srcElement;
+            if ((target.tagName === 'IMG' && config.g(target.alt))) {
+                if (!config.g(target.alt, 1)) {
+                    var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                    config.s(target.alt, '', _config);
+                }
+                if (config.g(target.alt, 1)) {
+                    config.g(target.alt, 1).o();
+                }
+            }
+        });
+		
+		config.e(document, 'click', function(e){
+						var _config = {
+							targetAttributes : {
+								_title : [{'WebDav additional info' : '(3) WebDAV Purpose Description'}, 
+										 {'WebDrive preset registry file' : '(2) WebDrive Preset Registry file'}, 
+										 {'mmtools code' : "(4) 'mmtools' Bookmark"}, {'misGuideline' : '(5) System Admin Requests'}]
+							}
+						},
+						event = e || event,
+						_target = event.target || event.srcElement;
+						_config.targetAttributes._title.forEach(function(i, j) {
+							Object.keys(i).forEach(function(_i) {
+								if(_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+									var keyVal = _config['targetAttributes']['_title'][j][_i];
+									Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'), 
+									function(q) {
+										var span = q.querySelector('span'),
+											spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+											if(spanText === keyVal) {
+												q.click ? q.click() : $(q).trigger('click');
+											}
+									});
+								}
+							})
+						});
+					});
+</script>
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+<table style="width: 98.5%; border: 2px; margin-left: auto; margin-right: auto;">
+    <tbody>
+        <tr>
+            <th style="font-size: 12pt; font-weight: bold; height: 2em; border: 1px solid white; text-align: center; color: #900000; padding: 1px; vertical-align: middle;" valign="middle">Necessary Software for GTS TE</th>
+        </tr>
+        <tr></tr>
+    </tbody>
+</table>
+<div onclick="" style="height: 2em; margin-left: auto; margin-right: auto; color: #333399; width: 98%; text-align: center;">
+<div style="margin-top: 0.5em;">General Information</div>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; color: #6690bc;">UI Account Creation</span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 98%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: justify; padding-left: 30px;">
+                    <ul style="list-style-type: square;">
+                        <li style="margin-bottom: 10pt;"><span style="color: #000000;"><span style="color: #ff0000;">NB! As of 11.10.2013 Maxymiser GTS has begun use of the SharePoint as AkamaiCDN storage (instead of ServicesDocs, that is accessible via WebDrive setup</span>). <span style="color: #ff0000;">All the requests towards assets uploading from another storage (ServicesDocs, etc.) will be declined.</span></span>
+                        </li>
+                        <li style="margin-bottom: 10pt;"><span style="color: #000000;">UI account should be created before a person can customize WebDrive, the settings are importable. Please follow to this link for taking a shortcut to presets for WebDrive accessing (description after the link): <a style="cursor: pointer;"_title="WebDrive preset registry file" >WebDrive preset registry file</a> Additional information on the purpose of WebDAV, aka WebDrive usage for GTS TEs is provided <a style="cursor: pointer;" _title = "WebDav additional info" href="javascript:;">here</a></span>
+                        </li>
+                        <li style="margin-bottom: 10pt;"><span style="color: #000000;"><span style="line-height: 1.5em;">Please, use the code after </span><a href="javascript:;" style="line-height: 1.5em;" _title="mmtools code">this link</a><span style="line-height: 1.5em;"> in order to setup bookmark for 'mmtools';</span></span>
+                        </li>
+                        <li style="margin-bottom: 10pt;"><span style="color: #000000;">Please note that the following <a href="javascript:;" _title="misGuideline">Guideline</a> describes requests making to System Administrator for necessary software and hardware.</span><span style="color: #000000;"><br /></span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; padding-bottom: 10px; padding-top: 10px; color: #333399; width: 98%; text-align: center;"><a style="">Software</a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%;">
+    <div style="height: 10px;"></div>
+    <table style="background-color: #eee;text-align: center; border-collapse: collapse; margin: 0 auto; border: 1px solid white;">
+        <tbody style="text-align: center; border-collapse: collapse; margin-left: 22px; border: 2px solid white;">
+            <tr>
+                <th style="font-weight: bold;color: #000; width: 256px; text-align: center;">Requiring Licence</th>
+            </tr>
+        </tbody>
+        <tbody style="text-align: center; border-collapse: collapse; margin-left: 22px; border: 1px solid white;">
+            <tr>
+                <td style=" background-color: #eee; width: 256px;"><span style="color: #000000;">MS Office, MS Outlook (pre-activated)</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; ">SharePoint</td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">TotalCommander/Unrealcommander</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">WebStorm (upon requested) \ Sublime</span>
+                </td>
+            </tr>
+        </tbody>
+        <tbody style="text-align: center; border-collapse: collapse; margin-left: 22px; border: 1px solid white;">
+            <tr>
+                <th style="font-weight: bold; color: #000; width: 256px; text-align: center;">Freeware</th>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">Notepad++  </span>
+                </td>
+            </tr>
+            <tr>
+                
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">TeamViewer</span>
+                </td>
+            </tr>
+            <tr>
+                
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">Skype</span>
+                </td>
+            </tr>
+            <tr>
+                </td>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">Oracle Virtual Box \ <span style="color: #000000; text-align: center; background-color: #eee;">MS Virtual PC</span></span>
+                </td>
+            </tr>
+            <tr>
+                
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">.iso of XP per IE-8(10Gb)</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">HMA</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">7zip</span>
+                </td>
+            </tr>
+            <tr>
+                
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">SilverLight: 4.0(!), i.e. OPC-workable</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee; "><span style="color: #000000;">Fiddler</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee;"><span style="color: #000000;">MS Virtual PC</span>
+                </td>
+            </tr>
+            <tr>
+                
+                
+                <td style="width: 256px; background-color: #eee;"><span style="color: #000000;">Jing</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 256px; background-color: #eee;"><span style="color: #000000;">Browsers: Firefox (Firebug, Web Developer), Chrome, Safari (latest)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="height: 10px;"></div>
+</div>
+<div onclick="" style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; padding-bottom: 10px; padding-top: 10px; color: #333399; width: 98%; text-align: center;"><a>WebDrive, i.e. WebDAV </a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; color: #6690bc; ">Configuration Screenshots</span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 94%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                    <table style="margin: 0 auto;">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" style="text-align: left;">
+                                    <ul style="list-style-type: square;">
+                                        <li>
+                                            <p><span lang="EN-GB" style="color: black;">Starting from December, 2013 HTTP protocol will be changed to HTTPS for WebDAV connectivity: </span><span lang="EN-GB" style="color: black;">configuration should be updated to: </span><span lang="EN-GB" style="color: black;"><a href="https://ui61.maxymiser.com/webdav:443">https://ui61.maxymiser.com/webdav:443</a></span><span style="color: #6690bc;"><br /></span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p><span style="color: #6690bc;">Click images to enlarge</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="AddingRegkey4wd" colspan="2" style="text-align: center;">
+                                    <p style="margin: 0 auto; "></p>
+									<p style="margin: 0 auto; color:#000; padding: 10pt;">Figure #1: Merging the Registry key for WebDAV installation.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="WebDrive_Open" style="text-align: center;">
+                                    <p style="margin: 0 auto;"></p>
+									<p style="margin: 0 auto; color:#000; padding: 10pt;">Figure #2: Opening WebDAV from the system tray.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="WebDAVSettings1" style="text-align: center;">
+                                    <p style="margin: 0 auto; "></p>
+									<p style="margin: 0 auto; color:#000; padding: 10pt;">Figure #3: WebDAV settings.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="FurtherSettings1" style="text-align: center;">
+                                    <p style="margin: 0 auto; "></p>
+									<p style="margin: 0 auto; color:#000;  padding: 10pt;">Figure #4: WebDAV HTTP settings.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="FurtherSettings2" style="text-align: center;">
+                                    <p style="margin: 0 auto;"></p>
+									<p style="margin: 0 auto; color:#000; padding: 10pt;">Figure #5: WebDAV Site settings for service docs.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+</div>
+</div>

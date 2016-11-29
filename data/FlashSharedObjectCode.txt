@@ -1,0 +1,78 @@
+mmcore.CreateSWF = function (v, path) {
+    var m = mmcore,
+        d = document;
+    m.swfVarsStr = '';
+    if (v && v instanceof Object) {
+        if (v instanceof Array) {
+            for (var i = 0; i < v.length; i++) {
+                var flg;
+                /mmid|mmpa\./.test(v[i]) ? flg = 1 : flg = 0;
+                if (m.GetCookie(v[i], flg) != '') {
+                    m.swfVarsStr == '' ? m.swfVarsStr += m.swfVars[i] + '=' : m.swfVarsStr += '&' + m.swfVars[i] + '=';
+                    m.swfVarsStr += m.GetCookie(v[i], flg) + '*365*' + flg
+                }
+            }
+        } else {
+            for (var i in v) {
+                if (v[i][0] != '') {
+                    m.swfVarsStr == '' ? m.swfVarsStr += i + '=' : m.swfVarsStr += '&' + i + '=';
+                    m.swfVarsStr += m.swfVars[i][0] + '*' + m.swfVars[i][1] + '*' + m.swfVars[i][2]
+                }
+            }
+        }
+    }
+    if (!path) {
+        path = '//maxymiser.hs.llnwd.net/o36/swfstorage/mm.swf' /*pls., note the path is old for LimeLight CDN! Change it for Akamai CDN!*/
+    }
+    m.swf = '<obj' + 'ect classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="' + window.location.protocol + '//fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="1" height="1" id="mm"><param name="FlashVars" bgcolor="transparent" value="' + m.swfVarsStr + '" /><param name="allowScriptAccess" value="always" /><param name="movie" value="' + path + '" /><param name="quality" value="low" /><embed flashvars="' + m.swfVarsStr + '" src="' + path + '" quality="low" bgcolor="transparent" width="1" height="1" name="mm" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="' + window.location.protocol + '//www.macromedia.com/go/getflashplayer" /></obj' + 'ect>';
+    if (m.swfWrap && m.swfWrap.parentNode) {
+        m.swfWrap.parentNode.removeChild(m.swfWrap)
+    } else {
+        m.swfWrap = d.createElement('div');
+        m.swfWrap.id = "swf-wrap";
+        m.swfWrap.innerHTML = m.swf;
+        d.body.appendChild(m.swfWrap)
+    }
+}
+
+/*There are several ways to call this function:
+1. To get existing cookies you need to call "mmcore.CreateSWF" function with object(a) or array(b) as argument
+(a)
+*/
+
+mm.swfVars = {
+    'pd': [mmcore.GetCookie('pd'), 365, 0],
+    'mycookies': ['mycookies', 333, 1],
+};
+mmcore.CreateSWF(mm.swfVars);
+
+/*In this case you can set all cookie params you wish and even create you own cookies.
+b)
+*/
+
+mmcore.swfVars = ['pd', 'mmid', 'srv'];
+mmcore.CreateSWF(mmcore.swfVars);
+/*
+If you need to get and write to SharedObject only maxymiser cookies you can use the approach (b). 
+2. After cookies was saved you can set it on target domain by simple call of "mmcore.CreateSWF" function
+
+*/
+
+mmcore.CreateSWF();
+
+/*
+In this case function sets saved in ShareObject cookies and call mmcore.SetCrossDomainAction function, which contains your code(actions, etc).
+
+ATTENTION!!! This solution is only for async requests
+ 
+Web Demo: for  Cross Domain Solution via Flash Shared Object
+ 
+1. Domain in UI - domain.com
+2. Campaign - 'CrossDomainTest'
+3. Test page - http://training.maxymiser.com/crossdomainflash/about_us_default.html
+ 
+To see how the cross-domain solution works you need to click on the 'contact us' link in main menu. 
+'Contact us' page is located on another domain and will be opened in a new tab. 
+A simple on-load action is tracked on the target page and you can check Action log for the 'domain.com' 
+domain to make sure that we keep the visitor personal information after cross domain transfer.
+*/

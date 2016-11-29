@@ -1,0 +1,160 @@
+/*global mmcore*/
+// TODO CGRequest one for all requests  
+function request(func) {
+    if (func) {
+        mmcore.CGRequest(func);
+    } else {
+        mmcore.CGRequest();
+    }
+}
+
+function async_action(name, value, attr) {
+    mmcore._async = true;
+    mmcore.SetAction(name, value || 1, attr || '');
+    mmcore.SetPageID('events');
+}
+
+function sync_action(name, value, attr) {
+    mmcore.$Action(name, value || 1, attr || '');
+}
+
+function action(event, link, www_host, actions) {
+    if (!link.href || !link.getAttribute('href')) {
+        return false;
+    }
+
+    var is_this_site = !! (link.href.indexOf(www_host) + 1), // to boolean  
+        wl = window.location,
+        ASYNC = true,
+        SYNC = false,
+        reg_js = /[jJ]avascript:/i,
+        mm_found,
+        geval = eval;
+
+
+    function set(actions, async) {
+        var i = 0,
+            which_set_action = (async) ? async_action : sync_action;
+
+        for (; i < actions.length; i += 1) {
+            which_set_action(actions[i].name, actions[i].value, actions[i].attr);
+        }
+    }
+
+    // TODO event.preventDefault(); with native js, for IE 8 (event.returnValue = false).  
+    // TODO configurate onclick parsing.  
+
+    if (link.getAttribute('href').match(reg_js)) {
+        event.preventDefault();
+        set(actions, ASYNC);
+        request(function () {
+            //wl.hash = 'mm_hash';  
+            mm_found = link.href.replace(reg_js, '');
+            geval(mm_found);
+        });
+    } else if (link.target === '_blank' || link.getAttribute('href').match(/^#.*/i)) {
+        set(actions, ASYNC);
+        request();
+    } else if (!is_this_site) {
+        event.preventDefault();
+        set(actions, ASYNC);
+        request(function () {
+            wl.hash = 'mm_hash';
+            wl.assign(link.href);
+        });
+    } else {
+        set(actions, SYNC);
+    }
+}
+
+
+/* 
+Few examples: 
+ 
+ 
+// Example with jquery: 
+ 
+ 
+var top_nav = $('.top_nav a'); 
+top_nav.click(function (e) { 
+    action(e, this, 'http://www.three.co.uk', [{ 
+            name: 'Clicks_T14', 
+            value: 1, 
+            attr: 'Top Nav' 
+        }, { 
+            name: 'HomeNav', 
+            value: 1, 
+            attr: '' 
+        } 
+    ]); 
+}); 
+ 
+// One more: 
+service.click(function (e) { 
+          var action_arr = [{ 
+                          name: 'Clickthrough_T25', 
+                          value: 1, 
+                          attr: 'Service' 
+               }]; 
+ 
+          if ( $(':contains("Find a branch")', this).size() ) { 
+                  action_arr.push({ 
+                          name: 'ServiceClick', 
+                          value: 1, 
+                          attr: 'FindBranch' 
+                  }); 
+          } else if ( $(this).parents('.mm_new_service_personal').size() ) { 
+                  action_arr.push({ 
+                          name: 'ServiceClick', 
+                          value: 1, 
+                          attr: 'PersonalLoan' 
+                  }); 
+           } else if ( $(this).parents('.mm_new_service_montages').size() ) { 
+                  action_arr.push({ 
+                          name: 'ServiceClick', 
+                          value: 1, 
+                          attr: 'Mortgages' 
+                   }); 
+           } else if ( $(this).parents('.mm_new_service_credit').size() ) { 
+                  action_arr.push({ 
+                          name: 'ServiceClick', 
+                          value: 1, 
+                          attr: 'CreditCard' 
+                  }); 
+           } 
+ 
+           action(e, this, site, action_arr); 
+}); 
+ 
+// Example with onclick: 
+ 
+ 
+var links = document.querySelectorAll('a'), 
+    i = 0; 
+ 
+ 
+for (; i < links.length; i += 1) { 
+    links[i].onclick = function (event) { 
+        action(e, this, 'http://www.three.co.uk', [{ 
+                name: 'Clicks_T14', 
+                value: 1, 
+                attr: 'Top Nav' 
+            } 
+        ]); 
+    }; 
+} 
+ 
+*/
+
+/*Certainly this is not final and best solution now, but I 'm in processing to make this solution, quite well.
+Now it works with jQuery perfectly. You will not need to write some additional code for different links.
+This solution cover:
+Links which move user to another domain (with target="_blank" or without).
+Links which have "#" at the beginning of the "href" attribute.
+Links which have "javascript:" in "href".
+Traditional site links as well.
+You can track multiply actions through the link(s).
+ 
+But this solution have some restrictions:
+Without jQuery not works in the IE8 (there is no event.preventDefault method)
+Other "TODOs" in development.*/

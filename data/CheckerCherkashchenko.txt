@@ -1,0 +1,41 @@
+/*optional line for old mmcore(FF)*/
+mmcore.AddDocLoadHandler(Function());
+(function (campaign) {
+    var exit = campaign.exit || function () {
+            return mmcore._docEnd
+        };
+    var _name = campaign.pageID.replace(/\s/g, '_');
+
+    function show() {
+        var el = document.getElementById(_name);
+        if (el) el.parentNode.removeChild(el);
+    }
+    document.write("<style id='" + _name + "' type='text/css'>" + campaign.hide + "{position:relative; left:-9999px}</style>");
+    (function wait() {
+        if (campaign.check()) {
+            var m = mmcore;
+            m.HideMaxyboxes = Function();
+            m._async = true;
+            m.SetPageID(campaign.pageID);
+            m.CGRequest(function () {
+                m.AddDocLoadHandler(show);
+            });
+        } else if (exit()) {
+            show();
+        } else {
+            setTimeout(wait, 50);
+        }
+        setTimeout(show, 5e3);
+    })();
+})({
+    hide: 'hide_area',
+    pageID: 'pageID',
+    check: function () {
+        var node = document.getElementById('content');
+        return node && node.className && node.className.indexOf('en_US') != -1;
+    },
+    /*optional function*/
+    exit: function () {
+        return document.getElementById('footer') && mmcore._docEnd
+    }
+});

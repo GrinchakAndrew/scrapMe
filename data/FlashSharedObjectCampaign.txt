@@ -1,0 +1,125 @@
+/*
+General info
+To create simple flash redesign campaign one can use com.maxymiser.MmFlash object presented in Assets/AS3_Lib folder. 
+Now we only have an opportunity to change design of static objects that are on the stage all over the time since flash object was loaded.
+ActionScript version supported: 3.
+We can run redesign tests to test Bitmaps, Shapes, SimpleButton objects, and other DisplayObjects that are not dynamically added to the Stage of the tested flash object.
+ 
+All libs and source files can be found in the folowing folders:
+\\192.168.166.3\Berestova Team\Vagin\flash\Assets\
+\\192.168.166.3\Berestova Team\Vagin\flash\
+You can try it by your own on example page:
+http://devel.maxymiser.com/vagin/flash/index.html
+Maxymiser domain name in AI:
+domain.com
+Maxymiser Campaign name in AI:
+"FlashDemoCampaign"
+ 
+Installation
+ 
+To include Maxymiser Flash Campaign functionality in flash object to be tested, Maxymiser offers com.maxymiser package and Class com.maxymiser.MmFlash to use. 
+All source JS and AS files are located in Assets/JS_assets and Assets/AS3_Lib folder.
+
+To make some swf object response to maxymiser requests using com.maxymiser.MmFlash class one should perform the following:
+ 
+Admin Interface side/JavaScript side:
+ 
+Step1: Create campaign.
+Step2: Create Script asset and map it to the test pages where the flash object is located.
+Step3: Build Config object to be used by flash object to initialize campaign settings.
+ 
+Use mmcore.FlashConfig(see Assets/JS_assets) function to register Elements for the campaign:
+*/
+ 
+mmcore.FlashConfig = {  
+    registerCampaign: function (name, hide, actionSWF) {  
+        var _t = this,  
+            _cmp = _t[name] = {};  
+        _cmp["hide"] = hide;  
+        _cmp["maxyboxes"] = (actionSWF ? [actionSWF] : []);  
+    },  
+    registerVariant: function (name, swfUrl) {  
+        var _t = this;  
+        if (_t[name] && _t[name]["maxyboxes"]) {  
+            _t[name]["maxyboxes"].push(swfUrl);  
+        }  
+    }  
+}  
+/*
+mmcore.FlashConfig.registerCampaign - function to register Campaign:
+parematers:
+name - Name of the campaign
+hide - how to hide the content of flash object.
+0-Do not hide,
+1-Hide whith method 1;
+2,3,4 - Hide Methods are under develop.
+actionSWF - URL of the flash object that contains Action Tracking Tools
+ 
+mmcore.FlashConfig.registerCampaign("flashdemocampaign", 1, "http://devel.maxymiser.com/vagin/flash/actions.swf");  
+ 
+Step4: Register all variants of the campaign using mmcore.FlashConfig.registerVariant function:
+Function registerVariant allows you to register variant settings in "mmcore.FlashConfig" object mmcore.registerVariant(name, swfURL)
+mmcore.FlashConfig.registerVariant - function to register Variant for campaign
+parematers:
+name - Name of the campaign
+swfUrl - URL of the swf file that contains function to alter default swf object
+*/
+
+
+/* Definition url of swf file for variant*/  
+mmcore.FlashConfig.registerVariant("flashdemocampaign", "http://devel.maxymiser.com/vagin/flash/restyle1.swf")  
+
+/*HTML code:
+Step1: Add “mxCampaign” variable to flashvars of the object is tested and set its value to the Campaign name:*/
+
+<param name="flashvars" value="mxcampaign=flashdemocampaign" /  >  
+ 
+/*This will tell “maxyflash” object, defined in flash object, that it must run “FlashDemoCampaign” campaign.
+ActionScript side:
+Step1: add “com.maxymiser” package to project library.
+Step2: add following lines to ActionScript source code of flash object to create new MmFlash object(example: maxyflash) at any part of native code that will be run on load:
+*/
+
+import com.maxymiser.MmFlash;  
+var maxyflash:MmFlash= new MmFlash(stage);  
+ 
+/*
+Step3: One should create flash objects and put them in the place, defined before by registerVariant javascript function, 
+each file(exemple: "restyle.swf", "restyle2.swf", "restyle3.swf") 
+must have “mmRedesign” function defined in their source code. 
+mmRedesign function will be run when the object is loaded. 
+It should contain instruction for the tested flash object what to change.
+
+MAXYMISER FLASH CAMPAIGN CODES INSERTION
+Integrated Code Example – ActionScript, JavaScript and HTML
+ActionScript3 code to be inserted:
+*/
+ 
+import com.maxymiser.MmFlash;  
+var maxyflash: MmFlash = new MmFlash(stage);  
+ 
+mmcore.FlashConfig = {  
+    registerCampaign: function (name, hide, actionSWF) {  
+        var _t = this,  
+            _cmp = _t[name] = {};  
+        _cmp["hide"] = hide;  
+        _cmp["maxyboxes"] = (actionSWF ? [actionSWF] : []);  
+    },  
+    registerVariant: function (name, swfUrl) {  
+        var _t = this;  
+        if (_t[name] && _t[name]["maxyboxes"]) {  
+            _t[name]["maxyboxes"].push(swfUrl);  
+        }  
+    }  
+}  
+mmcore.FlashConfig.registerCampaign("flashdemocampaign", 1, "http://devel.maxymiser.com/vagin/flash/actions.swf");  
+  
+mmcore.FlashConfig.registerVariant("flashdemocampaign", "http://devel.maxymiser.com/vagin/flash/restyle1.swf")  
+mmcore.FlashConfig.registerVariant("flashdemocampaign", "http://devel.maxymiser.com/vagin/flash/restyle2.swf")  
+mmcore.FlashConfig.registerVariant("flashdemocampaign", "http://devel.maxymiser.com/vagin/flash/restyle3.swf")  
+mmcore.FlashConfig.registerVariant("flashdemocampaign", "http://devel.maxymiser.com/vagin/flash/restyle4.swf")  
+
+/*HTML Code to be inserted:
+Add “mxcampaign” variable to flashvars of the object is tested and set its value to the Campaign name:*/
+
+<param name="flashvars" value="mxcampaign=flashdemocampaign" />  

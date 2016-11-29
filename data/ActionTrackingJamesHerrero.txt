@@ -1,0 +1,51 @@
+mmcore.comboAction = function (e, name, val, attr, breaker) {
+    var m = mmcore,
+        timeout, isFunc = typeof breaker == 'function',
+        cbCall = isFunc ? breaker : function () {
+            if (~navigator.userAgent.indexOf('Firefox/')) location.hash = 'h';
+            location.assign(breaker.href);
+        }, callback = function () {
+            clearTimeout(timeout);
+            cbCall();
+        }, noCallback = !breaker ? 1 : isFunc ? 0 :
+            breaker.target && /\_?(blank|new)/.test(breaker.target) ||
+            breaker.href && /^#/.test(breaker.href.replace(location.href.replace(location.hash, ''), ''));
+    m._async = 1;
+    m.SetPageID('mmevents');
+    m.SetAction(name, val || 1, attr || '');
+    if (noCallback) {
+        m.CGRequest();
+        return true;
+    }
+    m.CGRequest(callback);
+    timeout = setTimeout(callback, 2000);
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+    return false;
+};
+
+
+/* EXAMPLES: 
+ 
+ 
+// Async action: 
+$('a.someLink').bind('click', function(e){ 
+  mmcore.comboAction(e, 'Name', 1, 'Attr'); 
+}); 
+ 
+ 
+// 'Click-thru' link: (takes anchor tag element as last argument) 
+$('a.someLink').bind('click', function(e){ 
+  return mmcore.comboAction(e, 'Name', 1, 'Attr', this); 
+}); 
+ 
+ 
+// Custom callback 'Click-thru': (takes function as last argument) 
+$('a.someLink').bind('click', function(e){ 
+  return mmcore.comboAction(e, 'Name', 1, 'Attr', function(){ 
+    $('form#someForm').submit(); 
+  }); 
+}); 
+ 
+ 
+*/

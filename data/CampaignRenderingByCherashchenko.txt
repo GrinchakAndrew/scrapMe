@@ -1,0 +1,28 @@
+;(function (campaign) {
+    var gi = mmcore.GenInfo[campaign.name],
+        t = 100, //usable in fallback content unhiding: timeout interval 50* 100 = 5 secs  
+        isDef = campaign.isDef,
+        rmb = [];
+    for (var mb in tc)
+        if (!/undefined|Default/.test(gi[mb.toLowerCase().replace(campaign.elementPrefix, '')])) rmb.push(mb);
+    if (rmb.length) {
+        var style = mmcore.snippets.Style(campaign.hide + '{position: relative; left:-10000px}');
+        (function wait() {
+            if (isDef && isDef() || mmcore._docEnd) {
+                mmcore.RenderMaxyboxes(rmb);
+                style.detach();
+            } else if (!t--) {
+                style.detach();
+            } else {
+                setTimeout(wait, 50);
+            }
+        }())
+    }
+})({
+    name: 'CampaignName',
+    hide: 'hide_area',
+    elementPrefix: 'mm_',
+    isDef: function () {
+        return document.getElementById('footer'); //key-element on-site to trigger isDefaultArrived  
+    }
+});

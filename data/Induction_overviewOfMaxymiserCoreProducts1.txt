@@ -1,0 +1,582 @@
+<script>
+    function Config() {
+        var config = {
+            altCol: {
+				'coreproducts1' : {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    src: " /data/images/coreproducts1.png",
+                    'width': '18%',
+                    'enlargeToWidth': 20,
+                    'left': 38
+                }, 
+				
+				'coreproducts2' : {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    src: " /data/images/coreproducts2.png",
+                    'width': '50%',
+                    'enlargeToWidth': 42,
+                    'left': 30
+                }
+			},
+
+            getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                } else if (!arguments.length) {
+                    return Object.keys(config.altCol);
+                } else if (alt && src) {
+                    return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+                } else if (alt && width) {
+                    return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+                } else if (alt && enlargeToWidth) {
+                    return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+                } else if (alt && left) {
+                    return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+                }
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.5'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+                        var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+
+                    arrowPress: function(e) {
+                        var event = e || window.event,
+                            handledImageContainer = document.querySelector('#handledImageContainer'),
+                            leftDefaultValue = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1) : 0,
+                            imageParentNodeEnlargedWidth = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', 1) : 0;
+
+                        switch (event.keyCode.toString()) {
+
+                            case '38':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '40':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '37' || '':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '39':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left =
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '48':
+                                {
+                                    if (event.ctrlKey) {
+                                        parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth ||
+                                            parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ?
+                                            handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%' : '';
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ?
+                                            handledImageContainer.style.left = leftDefaultValue + '%' : '';
+                                    }
+                                    break;
+                                }
+                            case '187':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                    }
+                                    break;
+                                }
+
+                            case '189':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                    }
+                                    break;
+                                }
+                        }
+                    },
+
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+
+                                var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+                                _u(window, eventType, _config.handler);
+
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                            };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': _g(targetEl.alt, '', '', '', '', 1) + '%'
+                                    }]),
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'background-image': "url('https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png')"
+                                    }, {
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'background-repeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '40px'
+                                    }, {
+                                        'padding-left': '1%'
+                                    }, {
+                                        'background-size': '100% 100%'
+                                    }, {
+                                        'background-position-x': '-4px'
+                                    }, {
+                                        'background-position-y': '-7px'
+                                    }], ''),
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+
+                                if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+
+                                if (!_g(targetEl.alt)['arrowPress']) {
+                                    s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+                                    _e(window, 'keydown', _config.arrowPress);
+                                }
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+
+    var config = new Config();
+    if (config.g()[0]) {
+        config.g().forEach(function(i) {
+            var img = new Image(),
+                parent = document.querySelector('#' + i);
+            img.alt = i;
+            img.src = config.g(i, '', 1);
+            img.style.cursor = 'pointer';
+            img.style.width = config.g(i, '', '', 1);
+            parent.appendChild(img);
+        });
+
+        config.e(document, 'click', function(e) {
+            var event = e || event,
+                target = event.target || event.srcElement;
+            if ((target.tagName === 'IMG' && config.g(target.alt))) {
+                if (!config.g(target.alt, 1)) {
+                    var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                    config.s(target.alt, '', _config);
+                }
+                if (config.g(target.alt, 1)) {
+                    config.g(target.alt, 1).o();
+                }
+            }
+        });
+    }
+    config.e(document, 'click', function(e) {
+        var _config = {
+                targetAttributes: {
+                    _title: [{
+                        "Back to 'Necessary Toolbox'": '(1) Induction: Toolbox for Front-end JavaScript Dev'
+                    }]
+                }
+            },
+            event = e || event,
+            _target = event.target || event.srcElement;
+        _config.targetAttributes._title.forEach(function(i, j) {
+            Object.keys(i).forEach(function(_i) {
+                if (_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+                    var keyVal = _config['targetAttributes']['_title'][j][_i];
+                    Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                        function(q) {
+                            var span = q.querySelector('span'),
+                                spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                            if (spanText === keyVal) {
+                                q.click ? q.click() : $(q).trigger('click');
+                            }
+                        });
+                }
+            })
+        });
+    });
+</script>
+
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px; vertical-align: middle;">UI Knowledge</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Core Products Overview</div>
+    </div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+	<div style="margin-left: auto; margin-right: auto; padding: 0.5em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="">MaxTest</div>
+    </div>
+        <div style="margin-left: auto; margin-right: auto; width: 98%;">
+        <table style="margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+						<span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+							<ul style="list-style-type: square;">
+							
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<b>MaxTEST</b> is a generic campaign type that incorporates both A/B and MVT online testing. 
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<b>MaxTEST</b> can also be configured as a sub-campaign for '<b>Master Campaigns</b>', 
+									launchable as a '<b>Personalization Campaign</b>' with Segmentation (under a corresponding Account Type).
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Therefore, <b>MaxTEST</b>, additionally, can be configured to run on Personalization Criteria (PCs), 
+									which are part of visitor behavioural targeting and personalization scheme. 
+									Personalization campaigns allow website content customization on the basis of targeting 
+									different visitor behaviour for the purpose of personalizing online experiences. 
+								</li>
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Targeting different visitors with specific content by geo-location,
+									gender or age, including some other visitor preferences, -
+									is a simple example of how personalization works. This logic is part of segmentation campaigns:
+								</li>
+								
+								<li style="text-align: center; list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<p id="coreproducts1"></p>
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Segmenting is possible by the following criteria: 
+								</li>
+								
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: none;">
+											<li style="margin-top: 10px;">
+												(1)	<b>Technology</b>: Browser (Browser Type; Browser Version; Browser Name; Internet Service Provider; Language Code; OS; Screen Resolution);
+											</li>
+											<li style="margin-top: 10px;">							
+												(2)	<b>Location</b>: (Continent; Country; Region; City; Zip Code (US); Metro Area (US)) 
+											</li>
+											<li style="margin-top: 10px;">							
+												(3)	<b>Traffic Source</b>: (Traffic Source Type; Search Engine; Entry SEO keyword; Referrer Domain; Managed Traffic: Level 1; Level 2; Level 3; Level 4);
+											</li>
+											
+											<li style="margin-top: 10px;">							
+												(4)	<b>Mobile</b>: Device Type; 
+											</li>
+											<li style="margin-top: 10px;">							
+												(5)	<b>Generation</b>: (Gen Day of Week; Gen Part of Day; Gen Hour; Gen Page; Gen Referrer);
+											</li>
+											
+											<li style="margin-top: 10px;">							
+												(6)	<b>Personalization Criteria</b> (Any PCs, which are previously created on the level of Site);
+											</li>
+											
+											<li style="margin-top: 10px;">							
+												(7)	<b>Visitor Activity</b>: (Action History [Most Recent Action, Second Most Recent Action, Third Most Recent Action], To Site [Recency to site, Visitor Age to site, Visit Frequency - Recent Week, Visit Frequency - 2 Weeks Ago, Visit Frequency - 3 Weeks Ago]; To Campaign [Recency to Campaign, Visitor Age to Campaign])
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Taking it one step further, -
+									segmentation rules are created for personalization criteria,
+									thus grouping visitors by segments.
+									Applying the personalization scheme,
+									Maxymiser is not only able to stream visitors into different segmentation groups for learning opportunity 
+									about the visitors - the scheme makes appropriate traffic distribution possible.
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									With the new release of Maxymiser User Interface (Warsaw Release), 'Targeting By Local Weather' under 'Weather' is initialized:
+								</li>
+								
+								<li style="text-align: center; margin-top: 15px; list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p id="coreproducts2"></p>
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									The following weather conditions will be possible to apply after inaction of the new release: </br>
+										1. Weather Condition: </br>
+									    Sunny, Cloudy, Raining, Snowing </br>
+										2. Weather Temperature:</br> Very Cold, Cold, Mild, Hot, Very Hot</br>
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<b>MaxTEST</b> campaign key 
+									content-optimization principle is combining different variants across a number 
+									of Elements to determine which perform best, 
+									and which combination of variants (experiences) increases conversion rates to determine the winner.  
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									To work effectively, a simple MaxTEST campaign requires:
+								</li>
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: none;">
+											<li style="margin-top: 10px;">
+												(1)	Campaign Pages: targeted location (page) on the tested website where customized content is served; 
+											</li>
+											<li style="margin-top: 10px;">							
+												(2)	Campaign Content: alternative HTML content of a given Variant;
+											</li>
+											<li style="margin-top: 10px;">							
+												(3)	Campaign Actions: metrics used to measure responsiveness of visitors to determine success of a given variant \ sub-campaign; 
+											</li>
+											
+											<li style="margin-top: 10px;">							
+												(4)	Campaign Experiences: combination of variants across different Elements, applied to testing a webpage; 
+											</li>
+											<li style="margin-top: 10px;">							
+												(5)	Browser Rules: browser limitations that are included or excluded to a campaign.
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+						</ul>
+						</span>
+					</td>
+				</tr>
+    </tbody>
+    </table>
+    <p></p>
+	</div>
+</div>

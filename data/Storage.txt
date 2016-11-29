@@ -1,0 +1,135 @@
+/**
+ * mmcore.storage module has a few methods, like set(), get(), del(), transferData(fromStorage,toStorage)
+ * mmcore.storage.transferData -> TBC
+ *
+ * usage is example:
+ * mmcore.storage.set('cookie', {name:"myGreatCookie", value:" you are bigMac master!"});
+ * mmcore.storage.set('localStorage', {name:"testStorage", value:"[1123,1241,1252,555,67,'3424324']"});
+ * mmcore.storage.get('localStorage', {name:"testStorage"});
+ * mmcore.storage.del('localStorage', {name:"testStorage"});
+ * mmcore.storage.set('windowName', {value:"cherepaha"});
+ * mmcore.storage.get('windowName', {value:"cherepaha"});
+ *
+ *   NEW!!
+ *   No need to choose storage if we want work with cookie
+ *   No need to choose lifetime if we want to create session cookie
+ *
+ *   mmcore.storage.set({name:"mm_t47", value:"this will be a session cookie"});
+ *   mmcore.storage.set({name:"mm_t47", value:"this cookie lifetime 10 days", days:10});
+ *
+ * @method mmcore.storage.set
+ * @param {String} storageType , can be (cookie, localStorage, windowName)
+ * @param {Object} data
+ * @param {String} data.name
+ * @param {Any Type of Data} data.value
+ * @param {Boolean} data.isExternal , we use 1(true) by default  // DEPRECATED , NOT USED ANYMORE
+ * @param {Number} data.days , we use 180 days by default
+ * @return {String} returns String on any result
+ */
+"use strict";
+/*global mmcore , unescape, escape*/
+
+
+mmcore.storage = (function () {
+    var _setters = (function () {
+        return {
+            cookie: function (n, v, d) {
+                var _t = window.mmcore,
+                    _h = _t._Host(_t._TL(location.hostname)),
+                    exp = _t._FutureDate(d);
+                _t._d.cookie = n + '=' + escape(v) + (_h.length ? ';domain=' + _h : '') + ';path=/' + (typeof d !== 'undefined' && d !== 0 ? (';expires=' + exp.toGMTString()) : '');
+                _t.SetParam(n, v);
+            },
+            localStorage: function (name, value) {
+                if (value.length) {
+                    localStorage[name.toLowerCase()] = value;
+                } else {
+                    delete localStorage[name.toLowerCase()];
+                }
+            },
+            windowName: function (name, value) {
+                window.name = value;
+            }
+        };
+    }());
+
+
+    var _getters = (function () {
+        return {
+            cookie: function (name) {
+                var cookieName = name;
+                var cookieData = unescape(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + escape(cookieName).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || "";
+                return cookieData;
+            },
+            localStorage: function (name) {
+                return localStorage[name.toLowerCase()] ? localStorage[name.toLowerCase()] : "";
+            },
+            windowName: function () {
+                return window.name;
+            }
+        };
+    }());
+
+
+    return {
+        set: function (storageType, data) {
+            var data = data || {};
+            var storage = (function () {
+                if (storageType !== undefined && typeof storageType === "string" && typeof data === "object") {
+                    return storageType;
+                } else if (typeof storageType === "object") {
+                    data = storageType;
+                    return "cookie";
+                } else {
+                    return false;
+                }
+            }());
+
+
+            var name = data.name || "",
+                value = data.value || "",
+                lifeTime = data.days || 0;
+
+            _setters[storage](name, value, lifeTime);
+        },
+        get: function (storageType, data) {
+            var name;
+            var isExternal;
+            var storage;
+
+
+            if (_getters[storageType]) {
+                storage = storageType;
+            } else if (typeof storageType === "object") {
+                storage = "cookie";
+                data = storageType;
+            } else {
+                return false;
+            }
+
+            if (data) {
+                name = data.name ? data.name : ""; // TODO need some optimization here  
+                isExternal = data.isExternal === undefined ? 1 : data.isExternal; // TODO need some optimization here  
+            }
+
+            return _getters[storage](name, isExternal);
+        },
+        del: function (storageType, data) { // TODO maybe we can use just "storageType" and "name" here  
+            if (storageType !== undefined && _setters[storageType]) {
+                var name,
+                    value = "",
+                    lifeTime,
+                    isExternal;
+
+
+                if (data && typeof data === "object") {
+                    name = data.name;
+                    lifeTime = -1;
+                    isExternal = data.isExternal === undefined ? 1 : data.isExternal;
+                }
+                _setters[storageType](name, value, lifeTime, isExternal);
+            }
+        },
+        transfer: function (fromStorage, toStorage, data) {}
+    };
+}());

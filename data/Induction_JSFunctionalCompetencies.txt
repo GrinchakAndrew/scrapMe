@@ -1,0 +1,212 @@
+<div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;    ">Functional Competencies: JavaScript Front-end Developer</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">General Information: JavaScript Front-end Developer</div>
+    </div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;">Aptitude Evaluation by Functional Competencies</span>
+    <table style="border: 2px solid #fff; margin: 0 auto; width: 100%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                    <table border="1" style="border: 1px solid #e3a521; margin: 0px auto; width: 98%;">
+                        <tbody>
+                            <tr>
+                                <th colspan="8" style="border: 1px solid #E3A521; font-variant: small-caps; text-align: center; background-color: #fcc78e; color: #ffffff; padding: 2px;" valign="middle"><span style="color: #000000;"><strong>Functional Competencies</strong></span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="width: 8%; text-align: center;"><span style="color: #000000; width: 15%;">Category</span>
+                                </td>
+                                <td colspan="2" style="width: 25%; padding: 2px; text-align: center;  "><span style="color: #000000;"><strong>Junior</strong></span>
+                                </td>
+                                <td colspan="2" style="width: 25%; padding: 2px; text-align: center;  "><span style="color: #000000;"><strong>Middle</strong></span>
+                                </td>
+                                <td style="width: 23%; padding: 2px; text-align: center;  "><span style="color: #000000;"><strong>Senior</strong></span>
+                                </td>
+                                <td style="width: 25%; padding: 2px; text-align: center;  "><span style="color: #000000;"><strong>Lead Dev</strong></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">Code Quality</span>
+                                </td>
+                                <td colspan="2" style="padding: 2px; text-align: left;  ">
+								<p><span style="color: #000000;">1. Writes well-commented, logically structured, maintainable and accurate code split into functional blocks.</span></p>
+								<p><span style="color: #000000;">2. Tests and debugs own code during development. </span></p>
+								<p><span style="color: #000000;">3. Follows required coding guidelines and standards and code review scores reflect accordingly</span></p>
+								<p><span style="color: #000000;">4. Applying above can successfully complete simple to medium level campaigns. May require help when non-standard cases arise.</span></p>
+                                </td>
+                                <td colspan="2" style="padding: 2px; text-align: left;  ">
+                                    <p><span style="color: #000000;">1. Uses patterns: Observer, Deferred \ Promise, MVC (effectively separates data, templates and the logic, i.e. HTML templating), etc. </span></p>
+									<p><span style="color: #000000;">2. Effectively applies algorithms for sorting, loops, function calls, handling DOM, etc.</span></p>
+									<p><span style="color: #000000;">3. Minimizes obvious logical and coding errors. </span></p>
+									<p><span style="color: #000000;">4. Applying above can successfully complete campaigns with any complexity level excluding custom development efforts. May require help on higher level complexity campaigns from a Senior resource. </span></p>
+                                </td>
+                                <td style="padding: 2px; text-align: left;  ">
+								<p><span style="color: #000000;">1. Develops highly maintainable code that is easy to understand, compliant to accepted standards, best practices and guidelines.</span></p>
+								<p><span style="color: #000000;">2. Envisions errors.</span></p>
+								<p><span style="color: #000000;">3. Uses fallbacks.</span></p>
+								<p><span style="color: #000000;">4. Re-enforces best testing and implementation practices. With no guidance required, can develop campaigns of any type or complexity. Completely self-sufficient on driving all development needs from start to finish.</span></p>
+                                </td>
+								<td style="padding: 2px; text-align: left;  ">
+								<p><span style="color: #000000;">1. Runs code review sessions.</span></p>
+								<p><span style="color: #000000;">2. Provides and ensures implementation of best coding practices, standards, and guidelines.</span></p>
+								<p><span style="color: #000000;">3. Continued review participation and contribution to the mmcore centralized and standardized API library and code templating.</span></p>							
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">JavaScript and DOM</span></td>
+                                <td colspan="2" style="text-align: left;  ">
+								<p><span style="color: #000000;">1. Modifies DOM with pure JS. </span></p>
+								<p><span style="color: #000000;">2. Effectively applies knowledge of working principles of DOM event(s) handlers, intervals, closures and AJAX.</span></p>
+								<p><span style="color: #000000;">3. Applies main functions in jQuery: append(), html(), prop(), etc.</span></p>
+								<p><span style="color: #000000;">4. Uses basic regular expressions. </span></p>
+								<p><span style="color: #000000;">5. Applies working principles of cookies. </span></p>
+								<p><span style="color: #000000;">6. Distinguishes between GET and POST queries. </span></p>
+								(1)
+                                </td>
+                                <td colspan="2" style="text-align: left;  ">								
+									<p><span style="color: #000000;">1. Re-defines client functionality according to tasks.</span></p>
+									<p><span style="color: #000000;">2. Successfully applies OOP approaches (constructors, objects-initializers, proto-inheritance, etc.).</span></p>
+									<p><span style="color: #000000;">3. Effectively applies such methods as: call(), apply().</span></p>
+									<p><span style="color: #000000;">4. Effectively learns and applies any JS library.</span></p>
+									<p><span style="color: #000000;">5. Uses feature and browser detection respectively.</span></p>
+									<p><span style="color: #000000;">6. Applies regular expressions.</span></p>
+									<p><span style="color: #000000;">7. Uses and understands principles of delegation.</span></p>
+									(2)
+                                </td>
+								<td colspan="2" style="text-align: left;  ">
+									<p><span style="color: #000000;">1. Uses in-depth understanding of interpreter's work (i.e. optimises code in relation to execution speed).</span></p>
+									<p><span style="color: #000000;">2. Uses knowledge of principles of page loading and rendering (reflow, repaint, page resources loading order, etc.)</span></p>
+									<p><span style="color: #000000;">3. Supports the development of organized standard templates. </span></p>
+									<p><span style="color: #000000;">4. Provides code refactoring for own and others' code. </span></p>
+									(3)
+                                </td>								
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">HTML / CSS</span>
+                                </td>
+                                <td colspan="2" style="text-align: justify;  ">
+                                    <p><span style="color: #000000;">(1). Codes HTML / CSS according to standards (W3C).</span>
+                                    </p>
+                                </td>
+                                <td colspan="2" style="text-align: left;  ">
+                                    <p><span style="color: #000000;">(1). Effectively applies CSS.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(2). Does the most part of tasks with HTML / CSS.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(3). Understands difference in image formats, techniques to optimize them.</span>
+                                    </p>
+                                </td>
+                                <td colspan="2" style="text-align: left;  ">
+                                    <p><span style="color: #000000;">(1). Excels in cross-browser web-development peculiarities (including 3rd-party cookies, iFrames, Flash, AJAX, Forms, XML pages, etc.)</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">Tasks Implementation, Planning and Execution</span>
+                                </td>
+                                <td colspan="2" style="text-align: left;">
+									<p><span style="color: #000000;">1.  Become comfortable understanding and choosing approaches to efficiently and effectively implement campaign criteria with various techniques and tools alowing for visibility and on-time delivery (API usage, templates, snippets, etc...)</span></p>
+									<p><span style="color: #000000;">2. Meets requirements, guidelines, standards.</span></p> 
+									<p><span style="color: #000000;">3. Completes tasks and goals on time, notifies proactively if not.</span></p> 
+									<p><span style="color: #000000;">4. Understands mmcore API library and usage.</span></p> 
+									<p><span style="color: #000000;">5.  Effectively troubleshoots code of other developers.</span></p>
+                                </td>
+                                <td colspan="2" style="text-align: left;">
+								<p><span style="color: #000000;">1. Correctly estimates tasks for simple to medium level campaigns.</span></p>
+								<p><span style="color: #000000;">2. Identifies potential issues and logical errors in refinement stage of campaign implementation.</span></p>
+								<p><span style="color: #000000;">3. Always escalates requirements issues and estimation gaps within specification/refinement sessions, or while in development/testing.</span></p>
+								<p><span style="color: #000000;">4. Uses XP practices in production.</span></p>
+								<p><span style="color: #000000;">5. Contributes to knowledge base on related topics.</span></p>
+								<p><span style="color: #000000;">6. Effectively re-uses coding techniques for different classes of tasks.</span></p>
+								<p><span style="color: #000000;">7. Has in-depth knowledge of mmcore API and CG functionality.</span></p>
+								<p><span style="color: #000000;">8. Can typically choose most efficient approaches to efficiently and effectively implement campaign criteria. More advanced techniques may be applied as recommend by senior team.</span></p>
+								<p><span style="color: #000000;">9. Become comfortable and familiar, by applied successful usage, with more advanced implementation techniques including automation</span></p>
+                                </td>
+                                <td style="text-align: left;">
+									<p><span style="color: #000000;">1. Completely self-sufficient and can build and estimate all complexity level campaigns and tasks against personal / others experience. This will include combinations of how techniques such as unit testing and automation.  Through collaboration with QC  can create, where appropriate, unit tests, hooks, or automated tests to support acceptance and other functional testing needs.</span></p>
+									<p><span style="color: #000000;">2. Knows when to leverage and apply automation techniques</span></p>
+									<p><span style="color: #000000;">3. Writes comprehensive estimation summary with reasonable suggestions, technical and logical risks identified.</span></p>
+									<p><span style="color: #000000;">4. Comfortable and able to address technical and non-technical issues as raised by junior members</span></p>
+									<p><span style="color: #000000;">5. Ensures quality and objectives are met. </span></p>
+									<p><span style="color: #000000;">6. Implements optimal solutions based on Client's goals understanding. </span></p>
+									<p><span style="color: #000000;">7. Splits tasks into blocks to change the task's difficulty level. </span></p>
+									<p><span style="color: #000000;">8. Proficient in methods of mmcore.</span></p>
+                                </td>
+                                <td style="text-align: left;">
+								<p><span style="color: #000000;">1. Consults and assists on highly complex issues and campaigns. Provides final development guidance on ensuring acceptance criteria is met, pitfalls, possible errors, complex system interactions, product module interactions, cross-browser issues and alternative content compatibility served by CG.  Advises and mentors on applying development approaches and techniques</span></p>
+								<p><span style="color: #000000;">2. Reccommends and advises when and where appropriatly to apply emulation and automation as part of tactical test cycle planning</span></p>
+								<p><span style="color: #000000;">3.Writes comprehensive estimation summaries to both client services and management personnel when required clearly explaining utilization of time </span></p>
+								<p><span style="color: #000000;">4. Detects whether requirements contradict product functionalities or implementation logic. Negotiates questionable points in requirements, and resolves inconsistent requirements. Bridges communication gaps. Initiates talks with Client Services and ensures team members are actively as vocal concerning additional requirements or changes needed for successful campaigns coding. </span></p>
+								<p><span style="color: #000000;">5. Recommend and implate necessary updates to mmcore API for standard or client based support.</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">Ingenuity</span></td>
+                                <td colspan="2" style="text-align: center;  ">
+									<p><span style="color: #000000;">Learns best practices and utilizes tools provided by more senior staff. Begins thinking about and documenting improvements to methodologies.</span></p>								
+                                </td>
+                                <td colspan="2">
+                                    <p><span style="color: #000000;">Suggests product functionality changes and the toolbox for implementing them.</span></p>
+                                </td>
+                                <td>
+									<p><span style="color: #000000;">
+										Suggests product functionality changes / workflow improvements. Comes up with non-standard and creative problem-solving techniques. Applies the use of innovative tools and implementation techniques resulting in data for review with Dev Lead and ultimately the team. 
+									</span></p>
+                                </td>
+								<td>
+									<p><span style="color: #000000;">
+										Runs feasibility study (provides advanced analytics and requirements for suggested functionalities; Considers different components and modules interactions related to the suggestions; capacity analysis). Proposes and recommends new approaches and methodologies for process optimization. Utilizes new approaches for a more structured and process driven review process. Drives automation of efforts and usage of best practices where applicable.
+									</span></p>
+                                </td>								
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">Mentoring</span>
+                                </td>
+                                <td colspan="4" style="text-align: center;  "><span style="text-align: center; color: #000000;">N/A</span>
+                                </td>
+								<td style="text-align: center;  ">
+								<p><span style="color: #000000;">
+									1. Supports standard coding styles and approaches, serves as an example in their application. Advises on high-level patterns implementations. Coaches others in best-practice programming constructs and concepts on different stages of campaign development.
+								</span></p>
+                                </td>
+                                <td>
+                                    <p><span style="color: #000000;">(1). Works out standard coding styles and approaches, serves as an example in their application. Advises on high-level patterns implementations. Coaches others in best-practice programming constructs and concepts on different stages of campaign development: serves as a methodology guru. Participates in company standards / guidelines creation and application.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(2). Monitors and participates in code-review sessions.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;  "><span style="color: #000000;">Team Mgmt.</span>
+                                </td>
+                                <td colspan="5" style="text-align: center;  "><span style="text-align: center; color: #000000;">N/A</span>
+                                </td>
+                                <td>
+                                    <p><span style="color: #000000;">
+										1. Consistently meets team performance targets. Debriefs team members towards their personal goals and proficiency.
+										2. Initiates discussions on current challenges with others.
+										3. Challenges team to develop and utilize new approaches
+									</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="height: 20px;"></div>
+</div>

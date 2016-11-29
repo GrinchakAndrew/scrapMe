@@ -1,0 +1,45 @@
+In general, it can be used as:
+1) hide-show solution for sync campaigns
+2) async checker for campaign mapping with hiding default content. It allows you to wait for DOM element appearance, ajax arrival (in case if page has ajax initialization and we need to wait for response) or custom JS events invocation, which could be flag for us to render campaign. Note that default will be hidden only of we have alternative content to render. Also you might want to setup code before or after CGrequest (in case we need to setup pers. crits).
+3)  mmpath solution with preloading images from Akamai. Note that for async campaign you are able to use mmpath by calling method "preloadImages" within campaign's scope, with tc variable passed to it:
+mmcore.T69.preloadImages(tc);  
+
+
+Some important features that you should be aware of:
+1) Each campaign will have it's own namespace, like mmcore.T69. Example of sync campaign initialization as part of campaign level script:
+mmcore.T69 = mmcore.initCampaign({  
+    name: 'T69_FlexiBannerMn',  
+    mmPath: '//service.maxymiser.net/cdn/easyjet/t69flexibanner/',  
+    hide: '#wrapper'  
+});  
+
+2) By that variable (e.g mmcore.T69) you will have access to 
+- campaign name
+- path to akamai assets
+- generated combination (if it's sync campaign)
+-  Add/remove CSS styles functionality
+- other functionality which could be added to Campaign's prototype at domain level
+3) You also able to control async checker timeout (e.g how much time we want to wait for ajax arrival) and emergency opener timeout
+4) By setting pageID render script will work in async mode
+5) to render campaign you should call render method of your campaign instance after initialization:
+mmcore.T69.render();  
+6) If you want your campaigns to have some additional features just extend initCampaign's prototype at the domain level. For instance, you might want to add templating system script or some actions helping scripts
+ 
+Here is an example of async checker:
+
+mmcore.T69 = mmcore.initCampaign({  
+    name: 'T69_FlexiBannerMn',  
+    mmPath: '//service.maxymiser.net/cdn/easyjet/t69flexibanner/',  
+    hide: '#wrapper',  
+    checker: function () {  
+       return document.getElementById("topnav");  
+    },  
+    pageID: 'T69_pageID',  
+    stopChecker: function () {  
+       return document.getElementById("footer");  
+    },  
+    beforeCGRequest: function () {},  
+    afterCGRequest: function () {},  
+    emergencyOpenTimeout: 3000,  
+    checkerTimeout: 5000  
+});  

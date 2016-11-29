@@ -1,0 +1,79 @@
+/*Suggested and Provided by James Herrero:*/
+
+
+mmcore.scrollAction = function (config) {
+    var w = window,
+        $ = w.jQuery;
+    if (!$) return;
+    var cookie = 'scroll_' + config.action,
+        lastPos = +mmcore.GetCookie(cookie) || 0,
+        $doc = $(document),
+        $win = $(w),
+        tracked = false,
+        throttle,
+        setAction = function (attr) {
+            tracked = true;
+            mmcore.SetAction(config.action, 1, attr);
+        },
+        checkScroll = function () {
+            var dHeight = $doc.height(),
+                pos = $doc.scrollTop() + $win.height();
+            if (config.percentage)
+                pos = pos / dHeight * 100 | 0;
+            if (pos > lastPos) {
+                if (config.element) {
+                    var $el = typeof config.element == 'string' ? $(config.element) : config.element,
+                        bottom = ($el.eq(0).offset() || {
+                            top: 9e99
+                        }).top + $el.eq(0).outerHeight();
+                    if (pos >= bottom) {
+                        setAction('');
+                        config.element = null;
+                    }
+                } else {
+                    var arr = config.percentage || config.pixels || [];
+                    for (var i = 0; i < arr.length; i++) {
+                        if (arr[i] && pos >= arr[i]) {
+                            setAction(arr[i] + (config.pixels ? 'px' : '%'));
+                            arr[i] = 0;
+                        }
+                    }
+                }
+                lastPos = pos;
+                mmcore.SetCookie(cookie, pos, 365);
+                if (tracked) {
+                    tracked = false;
+                    mmcore._async = 1;
+                    mmcore.SetPageID('mmevents');
+                    mmcore.CGRequest();
+                }
+            }
+        };
+    $win.scroll(function () {
+        clearTimeout(throttle);
+        throttle = setTimeout(checkScroll, 500);
+    });
+    $doc.ready(checkScroll);
+};
+
+Example calls:
+
+mmcore.scrollAction({
+    action: 'ScrollPercentage',
+    percentage: [50, 75, 90, 100]
+});
+
+mmcore.scrollAction({
+    action: 'ScrolledPixels',
+    pixels: [1500, 2000, 2500]
+});
+
+mmcore.scrollAction({
+    action: 'SawFooter',
+    element: $('#site-footer')
+});
+
+mmcore.scrollAction({
+    action: 'Seen123Span',
+    element: '.class123 > div > span'
+});

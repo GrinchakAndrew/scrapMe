@@ -1,0 +1,47 @@
+/** 
+ * Global PersCriteria
+ *
+ * @criteriaList {array} - array with the list of persCriteria
+ * @cookieCriteria {JSON} - JSON with all the saved criteria
+ * @defineCriteria {function} - please set each criteria in this function
+ *
+ */
+;
+(function (settings) {
+    var list = settings.criteriaList,
+        cookieCriteria = mmcore.GetCookie('mm_criteria', 1) || false;
+    mmcore.persCriteria = {};
+    for (var i = 0; i < list.length; i += 1) {
+        mmcore.persCriteria[list[i]] = '';
+    }
+    //restored from cookie if it exists  
+    if (cookieCriteria) {
+        var mm_JSON = JSON.parse(cookieCriteria);
+        for (var key in mm_JSON) {
+            if (typeof mmcore.persCriteria[key] != 'undefined') {
+                mmcore.persCriteria[key] = mm_JSON[key];
+            }
+        }
+    }
+    //apply defined criteria and track them  
+    mmcore.setCriteria = function () {
+        settings.defineCriteria();
+        for (var key in mmcore.persCriteria) {
+            mmcore.SetPersCriterion(key, mmcore.persCriteria[key]);
+        }
+    };
+    //init setCriteria and save to cookie  
+    mmcore.AddDocLoadHandler(function () {
+        mmcore.setCriteria();
+        //save to cookie  
+        mmcore.SetCookie('mm_criteria', JSON.stringify(mmcore.persCriteria), 365, 1);
+    });
+})({
+    criteriaList: ['criteriaOne', 'criteriaTwo', 'criteriaThree'],
+    defineCriteria: function () {
+        //define each criteria here, example:  
+        mmcore.persCriteria.criteriaOne = 'test';
+        mmcore.persCriteria.criteriaTwo = 'no';
+        mmcore.persCriteria.criteriaThree = 'login';
+    }
+});

@@ -1,0 +1,135 @@
+/*
+ *   Possible options:
+ *
+ *    once:           will ensure the callback list can only be fired once in the triggered event.
+ *
+ *
+ *    memory:         will keep track of previous values and will call any callback functions added
+ *                    after the list has been fired right away with the latest "memorized" values
+ * @param options {{once:boolean, memory: boolean}|undefined}
+ * @constructor
+ */
+function Observer(options) {
+    options = options || {};
+    var
+    // Last fire value (for non-forgettable lists)  
+    memory,
+        // Boolean Flag to signify if the list has already been fired  
+        fired,
+        //Blocked observer: if Observer is locked, it will not accept any parameters, and will only store the states.  
+        locked = false,
+        // The list of callback functions  
+        list = [];
+    /** 
+     * Is a method for binding callback functions to the triggered event.
+     * @param fn {function} Is a callback function.
+     */
+    this.bind = function (fn) {
+        if (!locked) {
+            if (fired) {
+                fn.call({}, memory);
+            } else {
+                list.push(fn);
+            }
+        }
+    };
+    /** 
+     * Unbinding the specific callback function from the event
+     * @param fn {function}
+     */
+    this.unbind = function (fn) {
+        var i = 0;
+        while (i < list.length) {
+            if (list[i] === fn) {
+                list.splice(i, 1);
+            } else {
+                i++;
+            }
+        }
+    };
+    /** 
+     * Unbinding All callback functions from the event
+     *
+     */
+    this.unbindAll = function () {
+        list = [];
+    };
+    /** 
+     * Blocking obsever and unbinding callback functions from the event
+     */
+    this.lock = function () {
+        locked = true;
+        this.unbindAll();
+    };
+    /**Checking if the state is locked or not: 
+     * @return {Boolean}
+     */
+    this.isLocked = function () {
+        return locked;
+    };
+    /**Publishing the event with the parameters. 
+     * @param data {*}
+     */
+    this.trigger = function (data) {
+        if (!locked) {
+            if (options.memory) {
+                memory = data;
+            }
+            if (options.once) {
+                fired = true;
+            }
+            var t_list = list.slice();
+            for (var i = 0; i < t_list.length; i++) {
+                t_list[i].call({}, data);
+            }
+            if (options.once) {
+                this.unbindAll();
+            }
+        }
+    };
+}
+
+Please, review the example of EventManager Usage:
+
+/* Example EventManager is a collection of observers */
+function EventManager(options) {
+    var events = {};
+    var isObserver = function (name) {
+        return events[name] instanceof Observer;
+    };
+    var createObserver = function (name) {
+        if (!isObserver(name)) {
+            events[name] = new Observer(options);
+        }
+        return events[name];
+    };
+    this.bind = function (name, fn) {
+        createObserver(name)
+            .bind(fn);
+        return this;
+    };
+    this.unbind = function (name, fn) {
+        if (isObserver(name)) {
+            if (fn) {
+                events[name].unbind(fn);
+            } else {
+                events[name].unbindAll();
+            }
+        }
+        return this;
+    };
+    this.lock = function (name, data) {
+        createObserver(name)
+            .lock();
+        return this;
+    };
+    this.isLocked = function (name, data) {
+        return createObserver(name)
+            .isLocked();
+    };
+    this.trigger = function (name, data) {
+        createObserver(name)
+            .trigger(data);
+        return this;
+    };
+}

@@ -1,0 +1,63 @@
+/*The class Deferrer can register multiple callbacks into a callback queues, 
+  invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.*/
+function Deferred() {
+    var
+    eventManager = new EventManager({
+        once: true,
+        memory: true
+    }),
+        state = "pending",
+        //Interface: presupposes that you can implement basic interface, and extended.  
+        promise = function () {
+            //Add handlers to be called when the Deferred object is resolved.  
+            this.done = function (fn) {
+                eventManager.bind("done", fn);
+                return this;
+            };
+            /*Add handlers to be called when the Deferred object is rejected*/
+            this.fail = function (fn) {
+                eventManager.bind("fail", fn);
+                return this;
+            };
+            /*Add handlers to be called when the Deferred object is either resolved or rejected*/
+            this.always = function (fn) {
+                eventManager.bind("done", fn)
+                    .bind("fail", fn);
+                return this;
+            };
+            /**
+             * Determines the current state of a Deferred object.
+             * @return {String}
+             */
+            this.state = function () {
+                /*[resolved | rejected | pending]*/
+                return state;
+            };
+        };
+    promise.call(this);
+    var promiseInterface = {};
+    promise.call(promiseInterface);
+    this.promise = function () {
+        return promiseInterface;
+    };
+    this.resolve = function (data) {
+        if (state !== "reject") {
+            eventManager.
+            trigger("done", data)
+                .
+            lock("reject");
+            state = "resolve";
+        }
+        return this;
+    };
+    this.reject = function (data) {
+        if (state !== "resolve") {
+            eventManager.
+            trigger("fail", data)
+                .
+            lock("resolve");
+            state = "reject";
+        }
+        return this;
+    };
+}

@@ -1,0 +1,280 @@
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; background-color: #dfe8f8; color: #339; width: 92%; text-align: center;"><a href="/" style="color: #339; font-variant: small-caps; font-size: 16px;" _jive_internal="true">Core Competencies <span style="color: #333399; text-align: center; background-color: #dfe8f8;">JavaScript Front-end Developer</span></a>
+</div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690BC; width: 98%; text-align: center;"><span style="text-align: center; line-height: 30px; font-variant: small-caps; color: #6690bc; font-size: 17px;">Aptitude Evaluation by Core Competencies</span>
+    <table style="border-collapse: collapse; border: 2px solid #fff; margin: 0 auto; width: 100%;">
+        <tbody>
+            <tr>
+                <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                    <table border="1" style="border-collapse: collapse; border: 1px solid #A9A9F5; margin: 0px auto; width: 98%;" jive-data-="">
+                        <tbody>
+                            <tr>
+                                <th colspan="8" style="border: 1px solid #A9A9F5; font-variant: small-caps; text-align: center; background-color: #86bedc; color: #ffffff; padding: 2px;" valign="middle"><span style="color: #000000;"><strong>Core Competencies</strong></span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="width: 8%; text-align: center;"><span style="color: #000000; width: 15%;">Category</span>
+                                </td>
+                                <td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Junior</strong></span>
+                                </td>
+                                <td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>J2M</strong></span>
+                                </td>
+                                <td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Middle</strong></span>
+                                </td>
+                                <td style="width: 10%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>M2S</strong></span>
+                                </td>
+                                <td style="width: 23%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Senior</strong></span>
+                                </td>
+                                <td style="width: 25%; padding: 2px; text-align: center; vertical-align: middle;"><span style="color: #000000;"><strong>Tech Lead</strong></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Communication</span>
+                                </td>
+                                <td colspan="2" style="padding: 2px; text-align: left; vertical-align: middle;">
+                                    <p><span style="color: #000000;">(Written)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Reads and understands emails and technical documentation. Writes simple emails.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Verbal)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Contributes to meetings, clearly communicates status and escalates issues to colleagues.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Follows discussions at meetings.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Prepares presentations on technical topics.</span>
+                                    </p>
+                                </td>
+                                <td colspan="3" style="padding: 2px; text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">(Written)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Writes simple documents.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Verbal)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Clearly and proactively communicates fairly complex issues.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Presents effectively to a small group.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Maintains meeting notes.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Takes active part in discussions.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">5. States his point of view clearly and persuasively.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">6. Makes conference calls.</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p><span style="color: #000000;">(Written)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Writes well-balanced documents, e-mails, presentations.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Verbal)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Proactively raises issues.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Maintains meeting minutes.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Actively questions and clarifies understanding, receives and provides constructive feedback.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Strong &amp; confident presenter, effectively conveys information to key stakeholders.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Analytical skills</span>
+                                </td>
+                                <td colspan="2" style="text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">(Frame of mind)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Understands specific campaign requirements and implementation logic.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Work with information)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Identifies the needed info. Consults with colleagues on the needed info. Proactively asks questions.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Gathers feedback on quality and validity of info.</span>
+                                    </p>
+                                </td>
+                                <td colspan="2" style="text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">(Frame of mind)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Envisions all the necessary details, tools and requirements for successful problem resolution and campaign delivery.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Work with information)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Defines the sources of information / requests. Gathers information effectively. Defines accuracy, relevance and validity of information to make balanced decisions.</span>
+                                    </p>
+                                </td>
+                                <td style="text-align: left; vertical-align: middle;">
+                                    <p><span style="color: #000000;">(Frame of mind)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Provides high-level diagnosis of the problem, structural decision-making, suggests problems resolution and estimations, re-structures current approaches to better suit the solution.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Work with information)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Demonstrates well-grounded reasons for decisions and recommendations. Can provide feedback on the validity and reliability of information. Can simplify information to facilitate learning and comprehension.</span>
+                                    </p>
+                                </td>
+                                <td style="text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">(Frame of mind)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Forsees problems and takes preventive measures. Breaks down problems into smaller components. Synthesises ideas towards solutions.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Substantiates solutions with evidence and arguments. Weighs all the pros and cons.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">Detects consistent patterns to work out unified approach to problem solving. Analyses dependencies and co-dependencies.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Exhibits well-structured report writing skills.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Problem solving</span>
+                                </td>
+                                <td style="text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">1. Clarifies problems and confirms approaches to resolution, makes appropriate escalations, if necessary.</span>
+                                    </p>
+                                </td>
+                                <td colspan="2">
+                                    <p><span style="color: #000000;">1. Identifies and resolves complex issues in a timely manner.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Suggests different ways of problem resolution.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Shows initiative to resolve problems.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Resolves complex issues with multiple parties involved.</span>
+                                    </p>
+                                </td>
+                                <td colspan="2">
+                                    <p><span style="color: #000000;">1. Identifies underlying trends and problems and makes corrective action plans to resolve them.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Uses continuous improvement techniques to drive best practices.</span>
+                                    </p>
+                                </td>
+                                <td style="text-align: justify;">
+                                    <p><span style="color: #000000;">1. Suggests workable methods of problem-solving and chooses the best.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Demonstrates resourcefulness: locates useful information for resolving problems.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Motivates others to resolve problems.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Teamwork</span>
+                                </td>
+                                <td colspan="2" style="text-align: left;">
+                                    <p><span style="color: #000000;">1. A proven team-player. Suggests improvements to make the team more efficient.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Adjusts communication style for team's interactions.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Does not conflict, yields to opinions of experienced colleagues.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Setups and supports contacts with employees that have influence on his work.</span>
+                                    </p>
+                                </td>
+                                <td colspan="2" style="text-align: left;">
+                                    <p><span style="color: #000000;">1. Collaborates effectively.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Takes actions to improve own performance for the good of the team.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Actively contributes to the best practices of the team.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Shares knowledge, ideas and information and gives explanations, comments, etc.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">5. Defines and provides the necessary support to colleagues.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">6. Keeps self-control in a conflict. Shows initiative to resolve conflicts.</span>
+                                    </p>
+                                </td>
+                                <td style="text-align: left; vertical-align: top;">
+                                    <p><span style="color: #000000;">1. Puts team goals above individual needs.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Teams up with others to reach common goals.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Inspires all team members to be useful for company by own example.</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p><span style="color: #000000;">1. Communicates across teams, understands and keeps up interactivity. Is an active and supportive team-player.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Is an active and supportive member of different types of teams.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Takes part and organizes professional meetings, sessions.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Actively blogs, comments, posts articles, etc. on internal resources.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">5. Ensures team members have all the necessary information.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">6. Regularly gives structural feedback to all the team members.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;"><span style="color: #000000;">Attitude</span>
+                                </td>
+                                <td colspan="2" style="text-align: left;">
+                                    <p><span style="color: #000000;">(Responsibility / Reaching Goals)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Keeps an open mind and is honest in relations with team members.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Clarifies expectations, makes efforts to meet those.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Finds a way to make his level tasks autonomously, up to the expected results and on time.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Initiative / Self-improvement)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Is supportive of co-workers' initiative.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2.Has a positive attitude to feedback.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Works on self-improvement continually.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">4. Reads books, articles, forums etc.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">5. Demonstrates loyalty, ability to receive critique from others.</span>
+                                    </p>
+                                </td>
+                                <td colspan="3" style="text-align: left;">
+                                    <p><span style="color: #000000;">(Responsibility / Reaching Goals)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Demonstrates self-standing problem resolution and availability to help others.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Initiative / Self-improvement)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Learns and applies new approaches.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Has a positive attitude to feedback.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Shares experience by keeping database of acceptable methods and necessary skills in working with specific clients, usual pitfalls and workarounds.</span>
+                                    </p>
+                                </td>
+                                <td style="text-align: left;">
+                                    <p><span style="color: #000000;">(Responsibility / Reaching Goals)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Takes responsibility for trainees.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">(Initiative / Self-improvement)</span>
+                                    </p>
+                                    <p><span style="color: #000000;">1. Has a positive attitude to feedback.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">2. Shows initiative in coaching staff.</span>
+                                    </p>
+                                    <p><span style="color: #000000;">3. Acts as a teacher, a mentor, a coach.</span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="height: 20px;"></div>
+</div>

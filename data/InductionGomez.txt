@@ -1,0 +1,853 @@
+<script>
+    function Config() {
+        var config = {
+            altCol: {
+                'gomez1': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez1.jpg",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez2': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_steps1_2.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez3': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step3.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez4': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step4.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez5': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step5.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez6': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step6.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez7': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step7.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez8': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez8.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez9': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez9.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez10': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step10.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez11': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step11.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez12': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez_step12.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez13': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez13.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez14': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez14.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez15': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez15.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez16': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez16.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez17': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez17.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+
+                'gomez18': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez18.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                },
+                'gomez19': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': "https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/QC%20accordeon/data/images/gomez19.png",
+                    'width': '35%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                }
+
+            },
+
+
+            getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                } else if (!arguments.length) {
+                    return Object.keys(config.altCol);
+                } else if (alt && src) {
+                    return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+                } else if (alt && width) {
+                    return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+                } else if (alt && enlargeToWidth) {
+                    return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+                } else if (alt && left) {
+                    return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+                }
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.5'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+						var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+
+                    arrowPress: function(e) {
+					
+						var event = e || window.event,
+                            handledImageContainer = document.querySelector('#handledImageContainer'),
+								leftDefaultValue = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1) : 0,
+								imageParentNodeEnlargedWidth = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', 1) : 0;
+
+                        switch (event.keyCode.toString()) {
+
+                            case '38':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '40':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '37' || '':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '39':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left =
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '48':
+                                {
+                                    if (event.ctrlKey) {
+                                        parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth ||
+                                            parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ?
+                                            handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%' : '';
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ?
+                                            handledImageContainer.style.left = leftDefaultValue + '%' : '';
+                                    }
+                                    break;
+                                }
+                            case '187':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                    }
+                                    break;
+                                }
+
+                            case '189':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                    }
+                                    break;
+                                }
+                        }
+					
+					
+                   },
+
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+							
+								var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+                                _u(window, eventType, _config.handler);
+
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                          };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': _g(targetEl.alt, '', '', '', '', 1) + '%'
+                                    }]),
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'background-image': "url('https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png')"
+                                    }, {
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'background-repeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '40px'
+                                    }, {
+                                        'padding-left': '1%'
+                                    }, {
+                                        'background-size': '100% 100%'
+                                    }, {
+                                        'background-position-x': '-4px'
+                                    }, {
+                                        'background-position-y': '-7px'
+                                    }], ''),
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+
+                                if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+
+                                if (!_g(targetEl.alt)['arrowPress']) {
+                                    s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+                                    _e(window, 'keydown', _config.arrowPress);
+                                }
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+
+    var config = new Config();
+    if (config.g()[0]) {
+        config.g().forEach(function(i) {
+            var img = new Image(),
+                parent = document.querySelector('#' + i);
+            img.alt = i;
+            img.src = config.g(i, '', 1);
+            img.style.cursor = 'pointer';
+            img.style.width = config.g(i, '', '', 1);
+            parent.appendChild(img);
+        });
+
+        config.e(document, 'click', function(e) {
+            var event = e || event,
+                target = event.target || event.srcElement;
+            if ((target.tagName === 'IMG' && config.g(target.alt))) {
+                if (!config.g(target.alt, 1)) {
+                    var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                    config.s(target.alt, '', _config);
+                }
+                if (config.g(target.alt, 1)) {
+                    config.g(target.alt, 1).o();
+                }
+            }
+        });
+    }
+    config.e(document, 'click', function(e) {
+        var _config = {
+                targetAttributes: {
+                    _title: [{
+                        "Back to 'Necessary Toolbox'": '(1) Induction: Toolbox for Front-end JavaScript Dev'
+                    }]
+                }
+            },
+            event = e || event,
+            _target = event.target || event.srcElement;
+        _config.targetAttributes._title.forEach(function(i, j) {
+            Object.keys(i).forEach(function(_i) {
+                if (_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+                    var keyVal = _config['targetAttributes']['_title'][j][_i];
+                    Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                        function(q) {
+                            var span = q.querySelector('span'),
+                                spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                            if (spanText === keyVal) {
+                                q.click ? q.click() : $(q).trigger('click');
+                            }
+                        });
+                }
+            })
+        });
+    });
+
+</script>
+</script>
+
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px; vertical-align: middle;">Gomez Measurements Setup</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Gomez Latency Measurements Tracker</div>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+        <table style="margin: 1em auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+                        <p id="gomez1" style="margin-top: 1em;"><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+						<a href="http://Gomeznetworks.com">http://Gomeznetworks.com</a> is an independent site that provides speed measurements for different kinds of online server requests. Maxymiser applies the Gomez services to ensure the speed JavaScript requests is within 300 milliseconds. 
+					 </span>
+                        </p>
+
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt; color: red;">
+					 NB! All the Gomez measurements should take up no more than 4 hrs. in duration. 
+					 </span>
+                        </p>
+
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+						How to Create a Test for Gomez Testing: 
+							<ul style="list-style-type: square;"> 						
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #1: <b>Press on</b> '<b>Admin tab</b>';</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #2: <b>Press on</b> '<b>Add/Edit Backbone Tests</b>':
+										<p id="gomez2" style="margin-top: 1em;"></p></li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #3: <b>Press</b> '<b>Add Backbone Tests</b>':
+										<p id="gomez3" style="margin-top: 1em;"></p>
+									</li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">Step #4: <b>Choose</b> '<b>Single Page-UTA</b>':
+										<p id="gomez4" style="margin-top: 1em;"></p>
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #5: <b>Insert Test Page URL (both CG and mmcore.js request)</b>:
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Content Generator Request is part of campaign generation logic that allows processing GET-requests from the Clients' webpage with all the necessary parameters on the back-end server (i.e., the Content Generator). All of the Content Generator Requests are made possible via the core Maxymiser library that is added by the Client to the <head></head> section of html on the Client landing page. This is part of OneTouch solution. Content Generator requests are part of JSONP technique, which allows making cross-domain server requests. 
+										On the screenshot below, on the networks tab (pressing F12 and selecting the 'Network' option in the browser, i.e., Chrome), press ctrl + F to search within the Network sources for mmcore.js. Prior to the search, please press F5 to renew all the network requests, as shown below: 
+									</li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez5" style="margin-top: 1em;"></p>
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Among the network requests, we need to copy the link to mmcore.js, as highlighted in yellow. On the context menu, make use of the 'Copy link address', as shown on the following screenshot: 
+									</li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez6" style="margin-top: 1em;"></p>
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										To select the needed CG Request, please follow the logic below: 
+									</li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										(1) We need to identify the number of the CG Requests for the Campaign in view: to this end, please proceed to open the OPC and determine which CG Request serves the campaign: 
+										<p id="gomez7" style="margin-top: 1em;"></p>
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										(2) We need to find the targeted CG Request on the Networks tab in the browser upon pressing F12. To this end, please press F5 to refresh the network queries and then ctrl F to search for 'Maxymiser' string among the network requests, as highlighted above (i.e., the URL of Content Generator Request is similar to 'service.maxymiser.net/cg/v5', in this URL 'cg' should be obligatory, as a part of the Content Generator network address). 
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										(3) The requests are located one by one cascading downwards after the first one located, and the first CG Request will be located topmost. 	
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										(4) If we have OPC installed on page and we are in the Sandbox mode, in the URL of the CG Request, we will have the string: 'mmcore.opc.install=1&mmcore.cfgId=1' which should be cut away from the URL, before it is placed to Gomez. For more details, please look at the screenshot below with the explanations, on the following page (there is a possibility of either 'mmcore.opc.install=1' or 'mmcore.cfgId=1' standing separately in the URL):   
+									</li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez8" style="margin-top: 1em;"></p>
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt; color : red;">
+										NB! Please note that parameters in URL for 'GET' server-requests are to be separated by either a '?' or '&' sign 
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Notice the field 'URL' on the screenshot above: the URL is part of the appropriate CG Request (i.e., ) the highlighted URL section.
+									</li>
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #6-11: </li>
+									<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<ul style="list-style-type: none;"> 						
+										
+									<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Choose: '<b>no page objects</b>';
+									</li>
+										
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Insert the '<b>Client_Test_Name</b>' (both CG and mmcore.js request);
+										</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Choose Tomorrow date or ('<b>No expiration</b>');
+										</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Select your folder or create a new one, if none (i.e., select the proper radio-button)
+										</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+											Select '<b>Configure with default settings and active later</b>'; 
+										</li>
+										
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+											Press '<b>Submit</b>'.
+										</li>
+										</ul>
+									</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez9" style="list-style-type: none; margin-top: 1em;"></p>
+								</li>
+							
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Step #12-14:</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt; list-style-type: none;">
+									<ul style="list-style-type: none;"> 
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Proceed to the '<b>Admin</b>' tab, select the created folder, since the test has not been launched yet, it will not be seen so far: to make it visible, check the 'Show UTA test' option, as shown under '<b>12the step</b>'.</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Then, select the tests. </li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Press the button under '<b>13th step</b>' to move the selected tests.</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Press the Edit button under '<b>14-th step</b>'.</li>
+									</ul>
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez10" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Step # 15-16:
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt; list-style-type: none;">
+									<ul style="list-style-type: none;"> 
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Select the '<b>Status</b>' and '<b>Nodes</b>' checkboxes: '<b>15-th step</b>'</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Press '<b>Continue</b>'.</li>
+									</ul>
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez11" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Steps #17-19: 
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt; list-style-type: none;">
+									<ul style="list-style-type: none;"> 
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Set the '<b>Active Status</b>' for the earlier created tests; </li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Select the necessary Nodes (the Nodes depend on the website language);</li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">It is best to select 3-4 Nodes: this will ensure coverage of the cities, where our visitors reside. </li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">The Nodes should be moved to the right side, as shown. </li>
+										<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">Press '<b>Submit</b>'.</li>
+										
+									</ul>
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez12" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Steps #20-24: Viewing statistical reports:
+										<ul style="list-style-type: none;"> 
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step # 20-21</b>: select the appropriate active test, if the test is inactive, set the '<b>checkbox Show inactive tests</b>' accordingly;</li>
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step # 22</b>: Move the selected test to the right for the 'selected transactions'</li>
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step # 23</b>: Select the time-interval when the test was active.</li>
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step # 24</b>: Press the 'Create chart' button. </li>
+										</ul>
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez13" style="margin-top: 1em;"></p>
+								</li>
+							</ul>
+					 </span>
+                        </p>
+
+                        <p><span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+					 How to Stop / Delete Test (if it is still active) 
+						<ul style="list-style-type: square;">
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Step #25:  select the time interval for building the chart (i.e., report);
+								</li>	
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Step #26: viewing the report chart we have built over the time-period selected; 
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Step #27: Press the enframed icon for detailed statistical data (these data are necessary for QA Report); 
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez14" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Step #28: Within the red frame we can see the necessary statistical data for QA report: 
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez15" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+										Step #29-30: Deleting the active \ inactive tests: 
+										<ul style="list-style-type: none;"> 
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step #29</b>: click on the 'Admin' tab;</li>
+											<li style="line-height: 1.8em; color: #000000; font-size: 10pt;"><b>Step #30</b>: Select the 'Add \ Edit backbone test';</li>
+										</ul>
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez16" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Steps #31-33: pls., refer to description of Steps #12-13 for the details: 
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez17" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Steps #34-35: Set the status under 'Test configuration' option, and press 'Continue':
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez18" style="margin-top: 1em;"></p>
+								</li>
+								<li style="line-height: 1.8em; color: #000000; font-size: 10pt;">
+									Steps # 36-37: under 'Test Configuration' set the 'delete' radio-button and press 'Submit' (i.e., step # 38). On the popup window below click 'Yes': 
+								</li>
+								<li style="list-style-type: none; line-height: 1.8em; color: #000000; font-size: 10pt;">
+										<p id="gomez19" style="margin-top: 1em;"></p>
+								</li>								
+						</ul>
+					 </span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div>

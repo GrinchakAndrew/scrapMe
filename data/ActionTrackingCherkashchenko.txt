@@ -1,0 +1,78 @@
+mmcore.snippets = mmcore.snippets = {};
+mmcore.snippets.linkTrack = function (event, link, www_host, actions) {
+    var _href = link.href || link.getAttribute('href');
+    if (!_href) {
+        return false;
+    }
+    var is_this_site = !! (_href.indexOf(www_host) + 1),
+        wl = window.location,
+        reg_js = /javascript:/i,
+        reg_hash = /^#.*/,
+        mm_found,
+        mm_str_href;
+
+    function request(func) {
+        mmcore.CGRequest(func);
+    }
+
+    function async_action(name, value, attr) {
+        mmcore.$Action(name, value || 1, attr || '');
+        mmcore.SetPageID('events');
+        mmcore._async = true;
+    }
+
+    function set(actions, func) {
+        for (var i = 0; i < actions.length; i += 1) {
+            async_action(actions[i].name, actions[i].value, actions[i].attr);
+        }
+        request(func)
+    }
+    //different conditions for tracking action   
+    if (reg_js.test(_href)) {
+        event.preventDefault();
+        set(actions, function () {
+            mm_str_href = _href,
+            mm_found = mm_str_href.replace(reg_js, '');
+            eval(mm_found);
+        });
+    } else if (link.target === '_blank' || reg_hash.test(_href)) {
+        set(actions);
+    } else if (!is_this_site) {
+        event.preventDefault();
+        set(actions, function () {
+            //Important need check this 
+            if (/firefox/i.test(navigator.userAgent)) {
+                wl.hash = 'mm_hash';
+            }
+            wl.assign(_href);
+        });
+    }
+}
+//set selectors for tracking different actions   
+var page_href = window.location.hostname,
+    el_links = jQuery('a'),
+    other_links = jQuery('a.new_link_js, a.examp');
+
+
+//add handler   
+other_links.click(function (e) {
+    mmcore.snippets.linkTrack(e, this, page_href, [{
+        name: 'TotalClicks',
+        value: 2
+    }]);
+});
+
+//add handler   
+el_links.click(function (e) {
+    if (!jQuery('a')
+        .hasClass('new_link_js')) {
+        mmcore.snippets.linkTrack(e, this, page_href, [{
+            name: 'TotalClicks',
+            value: 1
+        }, {
+            name: 'TotalClick_n2',
+            value: 1,
+            attr: 'ttest'
+        }]);
+    }
+});

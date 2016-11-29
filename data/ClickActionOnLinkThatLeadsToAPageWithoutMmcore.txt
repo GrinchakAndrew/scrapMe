@@ -1,0 +1,59 @@
+/** 
+*  @name {string} - action name 
+*  @value {number} - action value 
+*  @attr {string} - action attribute 
+*  @href {string} - link href 
+*  @request {function} - send request to CG and execute the callback 
+* 
+*/  
+
+/*This snippet can be used to tracking action by clicking on a link that leads to a page without mmcore: 
+Suggested and provided by Roman Zheleznov*/ 
+  
+var setClickAction = function(targetLink, name, value, attr) {  
+    var bind = function(node, type, fn) {  
+        var listener = function(event) {  
+            var e = event || window.event;  
+            if (fn.call(node, e) === false) {  
+                if (e.preventDefault) {  
+                    e.preventDefault();  
+                } else {  
+                    e.returnValue = false;  
+                }  
+            }  
+        };  
+        if (node.addEventListener) {  
+            node.addEventListener(type, listener, false);  
+        } else if (node.attachEvent) {  
+            node.attachEvent("on" + type, listener);  
+        }  
+    };  
+    var request = function(callback) {  
+        var willExecuted = true;  
+        var callbackExecutor = function() {  
+            willExecuted && callback();  
+            willExecuted = false;  
+        };  
+        setTimeout(callbackExecutor, 2000);  
+        mmcore._async = true;  
+        mmcore.SetPageID('mm_events');  
+        mmcore.CGRequest(callbackExecutor);  
+    };  
+    bind(targetLink, 'click', function() {  
+        mmcore.$Action(name, value, attr);  
+        if(targetLink.target !== '_blank' || /#|^javascript:void\(/i.test(targetLink.href)){  
+            request(function() {  
+                if(/Firefox/.test(navigator.userAgent)){  
+                    location.hash = 'mm';  
+                }  
+                window.location.assign(targetLink.href);  
+            });  
+            return false;  
+        }  
+    });  
+}; !  
+
+/*Example of usage:*/
+
+var link = document.querySelector('#testElem');  
+setClickAction(link, 'action_name', 1, 'action_attribute');  

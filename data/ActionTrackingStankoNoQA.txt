@@ -1,0 +1,200 @@
+mmcore.snippets = mmcore.snippets || {};
+
+/* async CG call for action tracking */
+if (!mmcore.snippets.asyncRequest) mmcore.snippets.asyncRequest = function (callback) {
+    callback = callback || function () {};
+
+    var callbackExecutor = function () {
+        try {
+            callback();
+        } catch (e) {
+            mmcore.EH(e);
+        } finally {
+            callbackExecutor = function () {};
+        }
+    }
+
+    mmcore._async = true;
+    mmcore.SetPageID('events');
+    mmcore.CGRequest(function () {
+        callbackExecutor();
+    });
+
+    setTimeout(function () {
+        callbackExecutor();
+    }, 2000);
+}
+
+/* event handler assignment */
+if (!mmcore.snippets.bind) mmcore.snippets.bind = function (node, evnt, callback) {
+    var callbackExecutor = function (event) {
+        callback.call(node, event || window.event)
+    }
+
+    if (node.addEventListener) {
+        node.addEventListener(evnt, callbackExecutor, false);
+    } else if (node.attachEvent) {
+        node.attachEvent("on" + evnt, function () {
+            callbackExecutor.apply(node, arguments);
+        });
+    }
+}
+
+/*
+    Click-through action tracking 
+    TO-DO: 
+    - relative paths processing 
+    - work on _blank vs. blank targets 
+    - process onclick handlers (onclick > click > live click > href) 
+    - input data validation 
+    - check how script handles javascript://comment and then do something 
+    - think of links that are being replaced in DOM by another JS library / our campaign logic 
+*/
+if (!mmcore.snippets.trackActions) mmcore.snippets.trackActions = (function () {
+    // custom property to target a link  
+    var EVENTS_REFERENCE = 'data-mmcore-events-ref',
+        // click event handlers  
+        callbacks = [],
+        // links click event handlers are assigned to  
+        linkRefs = [];
+
+    var linkProcessing = {
+        // getting anchor type (type names are intuitive)  
+        type: function (targetLink) {
+            var linkHref = targetLink.href || targetLink.getAttribute('href'),
+                types = {
+                    refSamePage: function () {
+                        return /_blank/.test(targetLink.target) ||
+                            (targetLink.protocol === location.protocol &&
+                            targetLink.hostname === location.hostname &&
+                            targetLink.pathname === location.pathname &&
+                            targetLink.search === location.search &&
+                            linkHref.indexOf('#') !== -1) ||
+                            /^javascript:void\(/i.test(linkHref);
+                    },
+                    refSameSite: function () {
+                        return (mmcore._Host(targetLink.hostname) === mmcore._Host(location.hostname)) ||
+                            targetLink.hostname === location.hostname;
+                    },
+                    isDynamic: function () {
+                        return /^javascript:/i.test(linkHref);
+                    },
+                    linkHref: function () {
+                        return linkHref;
+                    }
+                };
+
+            for (var param in types) {
+                if (types.hasOwnProperty(param) && types[param]()) {
+                    return param;
+                }
+            }
+        },
+        // processing anchor by type  
+        handlers: {
+            refSamePage: function () {
+                mmcore.snippets.asyncRequest();
+            },
+            refSameSite: function () {
+                /* do nothing, postponed actions are tracked: if a 'link' without 'href' attribute is clicked on, 
+                    the postponed action will be tracked (acc. to the number of clicks) 
+                    as soon as the first CGRequest is made 
+                 */
+            },
+            isDynamic: function (targetLink) {
+                var linkHref = targetLink.href || targetLink.getAttribute('href');
+                try {
+                    new Function(linkHref.replace(/^javascript:/i, '')).call(window);
+                } catch (e) {
+                    mmcore.EH(e);
+                }
+            },
+            linkHref: function (targetLink, evt, bubbling) {
+                var targetLinkHref = targetLink.href || targetLink.getAttribute('href');
+
+                mmcore.snippets.asyncRequest(function () {
+                    location.assign(targetLinkHref);
+                });
+
+                evt.preventDefault ? evt.preventDefault() : evt.returnValue = false;
+            }
+        }
+    }
+
+    // handling default behavior when the link is clicked  
+    var preClickHandler = function (targetLink, evt) {
+        var targetLinkType = linkProcessing.type(targetLink),
+            targetLinkHandlers = linkProcessing.handlers;
+
+        try {
+            targetLinkHandlers[targetLinkType](targetLink, evt);
+        } catch (e) {
+            mmcore.EH(e);
+        }
+    }
+
+    // custom click event handler assignment that uses only one event handler for several callbacks  
+    var bindClickThrough = function (targetLink, callback) {
+        var targetLinkId;
+
+        // checking reference existence  
+        if (typeof targetLink[EVENTS_REFERENCE] === 'undefined') {
+            // set link id as value in the reference to callback index  
+            targetLinkId = callbacks.length;
+            targetLink[EVENTS_REFERENCE] = targetLinkId;
+            callbacks[targetLinkId] = [];
+            linkRefs[targetLinkId] = targetLink;
+
+            // assigning unique click handler to process all the callbacks  
+            mmcore.snippets.bind(targetLink, 'click', function (evt) {
+                var targetLinkId = targetLink[EVENTS_REFERENCE];
+                try {
+                    var callbacksCol = callbacks[targetLinkId];
+                    for (var i = 0; i < callbacksCol.length; i++) {
+                        callbacksCol[i].call(targetLink);
+                    }
+
+                    preClickHandler(targetLink, evt);
+                } catch (e) {
+                    mmcore.EH(e);
+                }
+            });
+        }
+
+        // adding a new callback to the corresponding callbacks array  
+        targetLinkId = targetLink[EVENTS_REFERENCE];
+        callbacks[targetLinkId].push(callback);
+    }
+
+    return function (targetLink) {
+        return {
+            // custom function  
+            callback: function (callback) {
+                bindClickThrough(targetLink, callback, this.bubbling);
+                return this;
+            },
+            // pure action tracking  
+            set: function () {
+                var args = arguments;
+                this.callback(function () {
+                    mmcore.$Action.apply(mmcore, args);
+                });
+                return this;
+            },
+            // callbacks reference  
+            eventHandlers: callbacks,
+            // processed links references  
+            linkRefs: linkRefs
+        }
+    };
+})();
+
+
+Usage syntax:
+
+var links = document.querySelectorAll('a');
+for (var i = links.length; i--;) {
+    mmcore.snippets.trackActions(links[i])
+        .set('Name1', '3', 'Attr')
+        .set('Name2', '2', 'Att2');
+}

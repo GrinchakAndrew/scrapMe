@@ -1,0 +1,54 @@
+/*
+ *The session cookie in view verifies if current user is active on-site, i.e.
+ *the website is reloaded or updated.
+ *User activity on-site is reflected via the session cookie.
+ *The script uses a checker to detect if the minimally allowed inactivity time has expired.
+ *If the timing has not expired, user stays on site without any additional functionality used,
+ *otherwise - additional function can be used to prompt user for re-authorisation.
+ */
+;
+(function (test) {
+    /* remove function setSessionCookie if mmcore is used on-site*/
+    function setSessionCookie(name, value, expires, path, domain, secure) {
+        document.cookie = name + "=" + escape(value) +
+            ((expires) ? "; expires=" + expires : "") +
+            ((path) ? "; path=" + path : "") +
+            ((domain) ? "; domain=" + domain : "") +
+            ((secure) ? "; secure" : "");
+    }
+
+    function checkCookie(d) {
+        var start = setInterval(function () {
+            var now_d = new Date().getTime();
+            if (d > now_d) {
+                test.whenCookieLive();
+            } else if (d <= now_d) {
+                clearInterval(start);
+                test.whenCookieDie(test.sessionDuration);
+
+            }
+        }, (test.intervalCheck || 1000));
+    }
+
+    function Init(t, n) {
+        var d = new Date().getTime() + t;
+        if (!test.clearOnClose) {
+            setSessionCookie(n, d, -1); /* if mmcore is available, the following mmcore function for cookie setting will be used: mmcore.SetCookie(n,d,-1,1) */
+        }
+        setSessionCookie(n, d, 365); /* if mmcore is available, the following mmcore function for cookie setting will be used: mmcore.SetCookie(n,d,365,1) */
+        checkCookie(d);
+    }
+    Init(test.sessionDuration, test.sessionCookieName);
+
+})({
+    clearOnClose: false,
+    intervalCheck: 1000,
+    sessionDuration: 3000, //ms  
+    sessionCookieName: 'mm_session',
+    whenCookieDie: function (t) {
+        console.warn('User was unactive for ' + t / 1000 + ' seconds'); /* exmp */
+    },
+    whenCookieLive: function () {
+        console.warn('active'); /* exmp */
+    }
+});

@@ -1,0 +1,70 @@
+/** @author evgeniy.pavlyuk@maxymiser.com (Evgeniy Pavlyuk) */
+(function () {
+    'use strict';
+    /** 
+     * @function
+     * @param {string} css
+     */
+    mmcore.AttachStyle = (function () {
+        var snippet = {
+            STYLE_ID: 'mm-style',
+            /** 
+             * @return {!HTMLStyleElement}
+             */
+            createStyle: function () {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                return style;
+            },
+            /** 
+             * @param {string} css
+             * @param {!HTMLStyleElement} style
+             */
+            appendCssToStyle: function () {
+                /** 
+                 * @function
+                 * @param {!HTMLStyleElement} style
+                 * @return {string} CSS.
+                 */
+                var getStyleCss;
+                /** 
+                 * @function
+                 * @param {!HTMLStyleElement} style
+                 * @param {string} css
+                 */
+                var setStyleCss;
+                // Choose the appropriate ways for working with a style element.  
+                if ('styleSheet' in snippet.createStyle()) {
+                    getStyleCss = function (style) {
+                        return style.styleSheet.cssText;
+                    };
+                    setStyleCss = function (style, css) {
+                        style.styleSheet.cssText = css;
+                    };
+                } else {
+                    getStyleCss = function (style) {
+                        return style.innerHTML;
+                    };
+                    setStyleCss = function (style, css) {
+                        style.innerHTML = css;
+                    };
+                }
+                // Rewrite the function so that it uses the methods chosen above for this and all subsequent calls (lazy load).  
+                return (snippet.appendCssToStyle = function (css, style) {
+                    setStyleCss(style, getStyleCss(style) + css);
+                }).apply(this, arguments);
+            }
+        };
+        return function (css) {
+            var style = document.getElementById(snippet.STYLE_ID);
+            if (!style) {
+                style = snippet.createStyle();
+                style.id = snippet.STYLE_ID;
+                (function () { // Insert the style before the last child of the document head.  
+                    this.parentNode.insertBefore(style, this);
+                }).call(document.getElementsByTagName('head')[0].lastChild);
+            }
+            snippet.appendCssToStyle(css, style);
+        };
+    }());
+}());

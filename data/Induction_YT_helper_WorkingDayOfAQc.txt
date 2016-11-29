@@ -1,0 +1,592 @@
+<script type='text/javascript'>
+    function Config() {
+        var config = {
+            altCol: {
+                '': {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    'src': '',
+                    'width': '40%',
+                    'enlargeToWidth': 45,
+                    'left': 30
+                }
+			},
+            getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                } else if (!arguments.length) {
+                    return Object.keys(config.altCol);
+                } else if (alt && src) {
+                    return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+                } else if (alt && width) {
+                    return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+                } else if (alt && enlargeToWidth) {
+                    return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+                } else if (alt && left) {
+                    return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+                }
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.7'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+                        var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+
+                    arrowPress: function(e) {
+                        var event = e || window.event,
+                            handledImageContainer = document.querySelector('#handledImageContainer'),
+                            leftDefaultValue = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1) : null,
+                            imageParentNodeEnlargedWidth = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', 1) : null;
+
+                        switch (event.keyCode.toString()) {
+
+                            case '38':
+                                {
+                                    handledImageContainer ? handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%' : null;
+                                    break;
+                                }
+
+                            case '40':
+                                {
+                                    handledImageContainer ? handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%' : null;
+                                    break;
+                                }
+                            case '37' || '':
+                                {
+									if(handledImageContainer) {
+										!handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+										handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+									}
+								
+                                    
+                                    break;
+                                }
+
+                            case '39':
+                                {
+									if(handledImageContainer) {
+										!handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+										handledImageContainer.style.left =
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+									
+									}
+									
+                                    
+                                    break;
+                                }
+                            case '48':
+                                {
+                                    if (handledImageContainer && event.ctrlKey) {
+                                        parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth ||
+                                            parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ?
+                                            handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%' : '';
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ?
+                                            handledImageContainer.style.left = leftDefaultValue + '%' : '';
+                                    }
+                                    break;
+                                }
+                            case '187':
+                                {
+                                    if (handledImageContainer && event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                    }
+                                    break;
+                                }
+
+                            case '189':
+                                {
+                                    if (handledImageContainer && event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                    }
+                                    break;
+                                }
+                        }
+                    },
+
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+
+                                var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+                                _u(window, eventType, _config.handler);
+
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                            };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': (_g(targetEl.alt, '', '', '', '', 1) + '%') ? (_g(targetEl.alt, '', '', '', '', 1) + '%') : 0
+                                    }]),
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'background-image': 'url('https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png')'
+                                    }, {
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'background-repeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '40px'
+                                    }, {
+                                        'padding-left': '1%'
+                                    }, {
+                                        'background-size': '100% 100%'
+                                    }, {
+                                        'background-position-x': '-4px'
+                                    }, {
+                                        'background-position-y': '-7px'
+                                    }], ''),
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+
+                                if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+
+                                if (!_g(targetEl.alt)['arrowPress']) {
+                                    s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+                                    _e(window, 'keydown', _config.arrowPress);
+                                }
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+
+    var config = new Config();
+    config.g().forEach(function(i) {
+        var img = new Image(),
+            parent = document.querySelector('#' + i);
+        img.alt = i;
+        img.src = config.g(i, '', 1);
+        img.style.cursor = 'pointer';
+        img.style.width = config.g(i, '', '', 1);
+        parent ? parent.appendChild(img) : null;
+    });
+
+    config.e(document, 'click', function(e) {
+        var event = e || event,
+            target = event.target || event.srcElement;
+        if ((target.tagName === 'IMG' && config.g(target.alt))) {
+            if (!config.g(target.alt, 1)) {
+                var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                config.s(target.alt, '', _config);
+            }
+            if (config.g(target.alt, 1)) {
+                config.g(target.alt, 1).o();
+            }
+        }
+    });
+
+    config.e(document, 'click',
+        function(e) {
+            var _config = {
+                    targetAttributes: {
+                        _title: [{
+                            'title': ['Terminology : Contents', '(7). Elements, Variants, 'Default' Variant']
+
+                        }]
+                    }
+                },
+                event = e || event,
+                _target = event.target || event.srcElement;
+
+            _config.targetAttributes._title.forEach(function(i, j) {
+                Object.keys(i).forEach(function(_i) {
+                    if (_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+                        var keyVal = _config['targetAttributes']['_title'][j][_i],
+							simulate_mouse_events = function(node, mouseEvent) {
+                                                        var options,
+                                                            oEvent;
+                                                        options = {
+                                                            pointerX: 0,
+                                                            pointerY: 0,
+                                                            clientX: 0,
+                                                            clientY: 0,
+                                                            button: 0,
+                                                            ctrlKey: false,
+                                                            altKey: false,
+                                                            shiftKey: false,
+                                                            metaKey: false,
+                                                            bubbles: true,
+                                                            cancelable: true
+                                                        };
+                                                        if (document.createEvent) {
+                                                            oEvent = document.createEvent('MouseEvents');
+                                                            oEvent.initMouseEvent(mouseEvent, options.bubbles, options.cancelable, document.defaultView, options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY, options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, node);
+                                                            node.dispatchEvent(oEvent);
+                                                        } else {
+                                                            var msEvent = document.createEventObject();
+                                                            for (var eventPropName in options) {
+                                                                msEvent[eventPropName] = options[eventPropName];
+                                                            }
+                                                            node.fireEvent('on' + mouseEvent, msEvent);
+                                                        }
+                                                    };
+                        if (typeof keyVal === 'string') {
+                            Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                                function(q) {
+                                    var span = q.querySelector('span'),
+                                        spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                                    if (spanText === keyVal) {
+										simulate_mouse_events(q, 'click');
+                                    }
+                                });
+                        } else if (({}).toString.call(keyVal) === '[object Array]') {
+                            var titleCol = document.querySelectorAll('.title');
+                            Array.prototype.forEach.call(titleCol, function(i, j) {
+                                debugger;
+                                if (i['innerText' in i ? 'innerText' : 'innerHTML'] === keyVal[0] ||
+                                    i['innerText' in i ? 'innerText' : 'innerHTML'].match(keyVal[0])
+                                ) {
+                                    simulate_mouse_events(i, 'click');
+                                    setTimeout(function() {
+                                        Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                                            function(y) {
+                                                var span = y.querySelector('span'),
+                                                    spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                                                if (spanText === keyVal[1]) {
+													simulate_mouse_events(y, 'click');
+                                                    return;
+                                                }
+                                            }
+                                        );
+                                    }, 500);
+                                }
+                            })
+                        }
+                    }
+                })
+            });
+        }
+    );
+</script>
+
+<div id='main' style='font-size: 10pt; font-family: arial, helvetica, sans-serif;'>
+    <div style='margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;'>
+        <table style='width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;'>
+            <tbody>
+                <tr>
+                    <th valign='middle' style='height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px;   vertical-align: middle;'>Working Day of a QC</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<div style='margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;'>
+        <div style='margin-top: 0.5em;'>Working Day of a QC</div>
+    </div>
+	
+	<div style='margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;'>
+        <span style='text-align: center; line-height: 30px; color: #6690bc; font-size: 17px;'>Working Day of a QC, acc. to YouTrack procedures</span>
+        <table style='margin: 0px auto; width: 94%;'>
+            <tbody>
+                <tr>
+						<td colspan='3' style='width: 28px; text-align: left; padding-left: 30px;'>
+							<p><span style='line-height: 1.5em; color: #000000; font-size: 10pt;'>
+								<ul style='list-style-type: none;'> 						
+									<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>  
+										The following Tickets can be created by QC, according to YouTrack: 
+										<ol>
+											<li style='margin-top: 1em;'><strong>QC Issue Found</strong></li>
+											<li><strong>Cross-check issue found</strong> (QC assigned for 'Cross Checked By' field)</li>
+										</ol>
+									</li>
+								<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>  	
+									<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: none;'> 						
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> WORKING DAY OF QC POINTERS:</li>
+											<li style='margin-top: 1em; line-height: 1.8em; color: #000000; font-size: 10pt;'> -	Drags cards from '<strong>Ready for QA</strong>' to 'Manual QA' milestone \ stage.</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> -	As soon as a bug is found, a bug ticket is to be created: This should be a sub-issue of the parent issue (!) to inherit parent pre-filled fields.</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> -	QA creates bug-report: via team-specific bug-report templates;</li> 
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> 
+													<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: circle;'>
+															<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> Screen, url, reproducing the issues: replication steps</li>
+															<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'> QC received and analyzes the Responsible Developer's feedback and closes ticket, if necessary.</li>
+													</ul>
+											</li> 
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	The ticket is to be moved to '<strong>Ready for Production</strong>': the Issue is automatically assigned to Developer (due to parent issue inheritance);</li> 
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	Developer is automatically notified via email;</li> 
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	Developer provides bug fixes: Dev changes the card to '<strong>Ready for QA</strong>' stage of the Campaign Issue;</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	QA is  immediately and automatically notified, provided double-checks and verifies proper functionality and set the status '<strong>Issue fixed</strong>';</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>
+												<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: circle;'>
+														<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>When QA created a wrong issue, which is not applicable as a bug, '<strong>non-applicable</strong>'  issue type (issue global type), is to be set;</li>
+												</ul>
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	QC will specify '<strong>Manual QA</strong>', '<strong>Ready for Crosscheck</strong>' or '<strong>Crosscheck</strong>' global state.</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>
+											<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: none;'>
+												<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>When an Issue's Global State is changed for '<strong>Ready for Production</strong>', the assigned Developer is automatically set to the 'Developer' field. The same goes for '<strong>Ready for QA</strong>' global state: QC-assignee is automatically field from the '<strong>QC Member</strong>' field. When '<strong>Ready for Cross-check</strong>' state is given to an Issue, the Assignee automatically is set from the field '<strong>Cross-checked by</strong>'.</li>
+											</ul>
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>-	Developer:</li> 
+											<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: circle;'>
+													<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>If an issue has been fixed, the FED will change the global state of the issue to '<strong>Ready for QA</strong>'.</li>
+													<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>When Developer drags ticket from '<strong>Coding</strong>' to '<strong>Ready to QA</strong>', DEV automatically prompted to give Publishing Instructions.</li>
+											</ul>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>
+												<ul style='line-height: 1.8em; margin-top: 1em; list-style-type: none;'>
+													<li style='line-height: 1.8em; color: #000000; font-size: 10pt; color: red;'>New issues should always be sub-tasks of the main ticket pre-created by CS Team: QC or Dev should never create their own new issues that are not sub-issues of the pre-created parent issues by CS Team.</li>
+												</ul>
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												
+													<li style='line-height: 1.8em; color: #000000; font-size: 10pt;'>- All '<strong>Investigation</strong>' tickets (children, i.e., sub-tasks of the Parent issue (campaign) are picked up by TL\TA to decide if Dev/QC should be involved, if so: then the responsible assignee is set and '<strong>Ready for Production</strong>' or '<strong>Ready for QA</strong>' global state is to be set.</li>
+												
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- All '<strong>New Campaign</strong>' tickets should have state '<strong>Ready for Cross-check</strong>', when QA stage has been completed. When cross-check issue is found, cross-checker will set '<strong>Ready for Production</strong> global state with type 'cross-check issue found' to be fixed by the Developer. When the cross-check issue is fixed, the Developer will set the '<strong>Ready for cross-check</strong>' global state. Cross-checker will then deal with the Issue by setting '<strong>Issue fixed</strong>' global state. Cross-checker will go through additional publish instructions (interactions with other campaigns, i.e., extended Publish with regard to other live campaigns); When cross-check is successful, the cross-checker will set the global state to '<strong>Delivered</strong>' global state.
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- If an issue \ campaign is paused, issue should be set to '<strong>Paused</strong>' state. 
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												-	If QC locates 'Missing Spec Details' problem, the card is set to '<strong>Spec Tech Review</strong>' global state. 
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- Make sure the issue has correct Type: e.g., '<strong>Missing Spec Details</strong>' / '<strong>QC Issue Found</strong>' / '<strong>Not applicable</strong>', etc. as applicable. 
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- Make sure the issue has correct global state: '<strong>Ready for production</strong>', '<strong>Ready for QA</strong>', '<strong>Manual QA</strong>', '<strong>Ready for cross-check</strong>', '<strong>cross-check</strong>', '<strong>cross-check issue fixed</strong>'. 
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- Make sure the issue sub-type is specified: e.g., <strong>generation_bug</strong> / <strong>tracking_bug</strong> / <strong>design_bug</strong> / <strong>functional_bug</strong> / <strong>rendering_bug</strong> before closing.
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- If a new design is invalid or broken with a use-case missing in the spec: the issue should be given a type of '<strong>QC Issue Found</strong>', sub-typed to '<strong>design_bug</strong>'. 
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- If an unspecified use-case turned up during coding: change type of issue to '<strong>Missing spec details</strong>', and sub-type the issue to '<strong>no issue type</strong>'.  
+											</li>
+											<li style='line-height: 1.8em; color: #000000; font-size: 10pt; margin-top: 1em;'>
+												- If a QC or Developer suggest an issue for improvement \ quality enhancement, but not a real bug: the improvement should be reasonable; all such improvement suggestions should have type '<strong>No type</strong>', and should be set to '<strong>Adjustment</strong>' issue sub-type. 
+											</li>
+											
+									</ul>
+								</li>
+								</ul>
+								</span>
+							 </p>
+					</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        </p>
+    </div> 
+ </div>
+ 

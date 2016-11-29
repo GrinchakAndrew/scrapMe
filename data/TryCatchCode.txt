@@ -1,0 +1,37 @@
+/** 
+* @function 
+* @param {Function} callback 
+* @param {Function=} errorCallback 
+* @return {Function} 
+* 
+* @example 
+* var throwError = function() { 
+*   throw new Error; 
+* }; 
+* $(document).ready(mmcore.tryCatch(throwError));  // Doesn't break down other handlers. 
+* 
+* @example 
+* campaign.content.hide(); 
+* // Ensures that the hidden content is shown even if an uncaught error is thrown in the campaign logic. 
+* mmcore.tryCatch(function() { 
+*   // Campaign logic. 
+* }, campaign.content.show)(); 
+*/  
+mmcore.tryCatch = (function() {  
+  return function tryCatch(callback, errorCallback) {  
+    var numberOfArguments = arguments.length;  
+    return function() {  
+      try {  
+        return callback.apply(this, arguments);  
+      } catch (error) {  
+        try {  
+          mmcore.EH(error);  
+        } finally {  
+          if (numberOfArguments > 1) {  
+            tryCatch(errorCallback)(error);  
+          }  
+        }  
+      }  
+    };  
+  };  
+})();

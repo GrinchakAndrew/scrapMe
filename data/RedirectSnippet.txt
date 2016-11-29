@@ -1,0 +1,49 @@
+/**
+ *  Redirect snippet by Roman Zheleznov
+ *
+ *  @url {string} - the url for redirect
+ *  @saveParams {boolean} - true - if we want to pass params, false - if not
+ *  @campaign {string} - campaign name
+ *  @element {string} - element name
+ */
+//simple redirect
+;
+(function (settings) {
+    var campaign = settings.campaign,
+        element = settings.element;
+
+    if (mmcore.GenInfo[campaign][element] !== 'Default') {
+        document.write("<style>html, html body { display: none; background :none !important; }</style>");
+        !document.body ? document.documentElement.appendChild(document.createElement('body')) : null;
+    }
+})({
+    campaign: 'T105test',
+    element: 'test'
+});
+
+//custom
+;
+(function (settings) {
+    var url = settings.url,
+        saveParams = settings.saveParams,
+        campaign = settings.campaign,
+        element = settings.element,
+        params;
+
+    if (mmcore.GenInfo[campaign][element] !== 'Default') {
+        document.write("<style>html, html body { display: none; background :none !important; }</style>");
+        !document.body ? document.documentElement.appendChild(document.createElement('body')) : null;
+
+        if (saveParams) {
+            params = window.location.search;
+            location.replace(url + params);
+        } else {
+            location.replace(url);
+        }
+    }
+})({
+    url: 'http://google.com',
+    saveParams: true,
+    campaign: 'T105test',
+    element: 'test'
+});

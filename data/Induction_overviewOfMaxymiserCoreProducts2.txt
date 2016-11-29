@@ -1,0 +1,631 @@
+<script>
+    function Config() {
+        var config = {
+            altCol: {
+				'coreproducts3' : {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    src: " /data/images/coreproducts3.png",
+                    'width': '65%',
+                    'enlargeToWidth': 65,
+                    'left': 20
+                }, 
+				
+				'coreproducts4' : {
+                    'state': {
+                        'click': 0,
+                        'keyup': 0
+                    },
+                    '_config': null,
+                    src: " /data/images/coreproducts4.png",
+                    'width': '40%',
+                    'enlargeToWidth': 40,
+                    'left': 37
+                }
+			},
+
+            getter: function(alt, _config, src, width, enlargeToWidth, left) {
+                if (_config && alt) {
+                    return config.altCol[alt] && config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] : null;
+                } else if (!_config && alt && !src && !width && !enlargeToWidth && !left) {
+                    if (config.altCol[alt]) {
+                        return config.altCol[alt] && config.altCol[alt]['state'] ? config.altCol[alt]['state'] : null;
+                    } else {
+                        return false;
+                    }
+                } else if (!arguments.length) {
+                    return Object.keys(config.altCol);
+                } else if (alt && src) {
+                    return config.altCol[alt] && config.altCol[alt]['src'] ? config.altCol[alt]['src'] : null;
+                } else if (alt && width) {
+                    return config.altCol[alt] && config.altCol[alt]['width'] ? config.altCol[alt]['width'] : null;
+                } else if (alt && enlargeToWidth) {
+                    return config.altCol[alt] && config.altCol[alt]['enlargeToWidth'] ? config.altCol[alt]['enlargeToWidth'] : null;
+                } else if (alt && left) {
+                    return config.altCol[alt] && config.altCol[alt]['left'] ? config.altCol[alt]['left'] : null;
+                }
+            },
+
+            setter: function(alt, val, _config) {
+                if (_config && alt) {
+                    !config.altCol[alt]['_config'] ? config.altCol[alt]['_config'] = _config : '';
+                } else if (alt && val) {
+                    if (({}).toString.call(val) === '[object Object]') {
+                        for (var i in val) {
+                            config.altCol[alt]['state'][i] = val[i];
+                        }
+                    }
+                }
+            },
+
+            domReady: function(callback) {
+                config.eventsBinder(document, 'DOMContentLoaded', callback);
+                config.eventsBinder(document, 'onreadystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        callback();
+                    }
+                });
+                config.eventsBinder(window, 'load', callback);
+            },
+
+            eventsBinder: function(El, event, handler) {
+                if (El && El.addEventListener) {
+                    El.addEventListener(event, handler);
+                } else if (El && El.attachEvent) {
+                    El.attachEvent('on' + event, handler);
+                }
+            },
+
+            eventsUnbinder: function(El, event, handler) {
+                if (El && El.removeEventListener) {
+                    El.removeEventListener(event, handler);
+                }
+
+                if (El && El.detachEvent) {
+                    El.detachEvent('on' + event, handler);
+                }
+            },
+
+            constructor: function(targetEl, _e, _g, s, _u) {
+                var _config = {
+                    documentCreateElement: function(El, id, style, text) {
+                        var returnable;
+                        if (El) {
+                            returnable = document.createElement(El);
+                            id ? returnable.id = id : '';
+                            if (style && ({}).toString.call(style) === '[object Array]') {
+                                for (var i = style.length; i--;) {
+                                    if (({}).toString.call(style[i]) === '[object Object]') {
+                                        for (var j in style[i]) {
+                                            returnable.style[j] = style[i][j];
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (text && ({}).toString.call(text) === '[object String]') {
+                                returnable['innerText' in returnable ? 'innerText' : 'innerHTML'] = text;
+                            }
+                        }
+                        return returnable;
+                    },
+                    appendOpacityDivToBody: function() {
+
+                        document.body.appendChild(_config.documentCreateElement('div', 'OpacityDivToBody', [{
+                            'backgroundColor': '#000'
+                        }, {
+                            'bottom': '0'
+                        }, {
+                            'left': '0'
+                        }, {
+                            'opacity': '0.5'
+                        }, {
+                            'position': 'fixed'
+                        }, {
+                            'right': '0'
+                        }, {
+                            'top': '0'
+                        }, {
+                            'zIndex': '9999'
+                        }]));
+                    },
+
+                    scroller: function(e) {
+                        var event = window.event || e,
+                            delta = event.detail ? event.detail * (-120) : event.wheelDelta,
+                            subRoutine = function(d) {
+                                var handledImageContainer = document.querySelector('#handledImageContainer');
+                                if (d >= 120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                }
+                                if (d <= -120 && handledImageContainer) {
+                                    handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                }
+                            };
+                        if (delta && event.ctrlKey) {
+                            subRoutine(delta);
+                        }
+                        return false;
+                    },
+
+                    arrowPress: function(e) {
+                        var event = e || window.event,
+                            handledImageContainer = document.querySelector('#handledImageContainer'),
+                            leftDefaultValue = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', '', 1) : 0,
+                            imageParentNodeEnlargedWidth = handledImageContainer ? _g(handledImageContainer.querySelector('img').alt, '', '', '', 1) : 0;
+
+                        switch (event.keyCode.toString()) {
+
+                            case '38':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '40':
+                                {
+                                    handledImageContainer.style.top =
+                                        parseInt(handledImageContainer.style.top.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '37' || '':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) > leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left = parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) - 1 + '%';
+                                    break;
+                                }
+
+                            case '39':
+                                {
+                                    !handledImageContainer.style.left ||
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) < leftDefaultValue ?
+                                        handledImageContainer.style.left = leftDefaultValue + '%' : handledImageContainer.style.left;
+                                    handledImageContainer.style.left =
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) + 1 + '%';
+                                    break;
+                                }
+                            case '48':
+                                {
+                                    if (event.ctrlKey) {
+                                        parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) > imageParentNodeEnlargedWidth ||
+                                            parseInt(handledImageContainer.style.width.match(/[-]?\d+/)) < imageParentNodeEnlargedWidth ?
+                                            handledImageContainer.style.width = imageParentNodeEnlargedWidth + '%' : '';
+                                        parseInt(handledImageContainer.style.left.match(/[-]?\d+/)) !== leftDefaultValue ?
+                                            handledImageContainer.style.left = leftDefaultValue + '%' : '';
+                                    }
+                                    break;
+                                }
+                            case '187':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) + 1 + '%';
+                                    }
+                                    break;
+                                }
+
+                            case '189':
+                                {
+                                    if (event.ctrlKey) {
+                                        handledImageContainer.style.width = parseInt(handledImageContainer.style.width.match(/\d+/)) - 1 + '%';
+                                    }
+                                    break;
+                                }
+                        }
+                    },
+
+                    handler: function(e) {
+                        var _e = e || event,
+                            executable,
+                            _ex = e.target,
+                            subRoutine = function(eventType) {
+
+                                var OpacityDivToBody = document.getElementById('OpacityDivToBody');
+                                if (OpacityDivToBody) {
+                                    OpacityDivToBody.parentNode.removeChild(OpacityDivToBody);
+                                }
+                                if (document.querySelector('#main') && document.querySelector('#handledImageContainer')) {
+                                    document.querySelector('#main').removeChild(document.querySelector('#handledImageContainer'));
+                                }
+
+                                _u(_ex, eventType, _config.handler);
+                                _u(document, event.type, _config.scroller);
+                                _u(window, eventType, _config.handler);
+
+                                var a = {};
+                                a[eventType.toString()] = 0;
+                                s(targetEl.alt, a);
+                            };
+
+                        if (_e.type === 'keyup' | 'onkeyup') {
+                            executable = function() {
+                                if (_e.keyCode.toString() === '27') {
+                                    subRoutine(_e.type);
+                                }
+                            };
+                        } else if (_e.type === 'click' | 'onclick') {
+                            executable = function() {
+                                subRoutine(_e.type);
+                            };
+                        }
+                        executable();
+                    },
+
+                    handleImageContainer: function() {
+                        if (targetEl) {
+                            if (!document.getElementById('handledImageContainer')) {
+
+                                var _el = _config.documentCreateElement('div', 'handledImageContainer', [{
+                                        'display': 'block'
+                                    }, {
+                                        'width': _g(targetEl.alt, '', '', '', 1) + '%'
+                                    }, {
+                                        'position': 'fixed'
+                                    }, {
+                                        'zIndex': '10001'
+                                    }, {
+                                        'top': '5%'
+                                    }, {
+                                        'background': '#FFF'
+                                    }, {
+                                        'text-align': 'center'
+                                    }, {
+                                        'left': _g(targetEl.alt, '', '', '', '', 1) + '%'
+                                    }]),
+                                    _ex = _config.documentCreateElement('div', '', [{
+                                        'background-image': "url('https://maxymiserbpos.sharepoint.com/sites/ua/training/Shared%20Documents/InductionAssets/close.png')"
+                                    }, {
+                                        'position': 'absolute'
+                                    }, {
+                                        'display': 'inline-block'
+                                    }, {
+                                        'background-repeat': 'no-repeat'
+                                    }, {
+                                        'cursor': 'pointer'
+                                    }, {
+                                        'height': '45px'
+                                    }, {
+                                        'width': '40px'
+                                    }, {
+                                        'padding-left': '1%'
+                                    }, {
+                                        'background-size': '100% 100%'
+                                    }, {
+                                        'background-position-x': '-4px'
+                                    }, {
+                                        'background-position-y': '-7px'
+                                    }], ''),
+                                    imgClone,
+                                    mousewheelEvt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+                                imgClone = targetEl.cloneNode();
+                                imgClone.style.width = '95%';
+                                imgClone.style.marginLeft = '0';
+                                imgClone.style.paddingTop = '8px';
+
+                                document.getElementById('main').appendChild(_el);
+                                _el.appendChild(imgClone);
+                                _el.appendChild(_ex);
+
+                                if (!_g(targetEl.alt)['mousewheelEvt']) {
+                                    s(targetEl.alt, {
+                                        'mousewheelEvt': 1
+                                    });
+                                    _e(document, mousewheelEvt, _config.scroller);
+                                }
+
+                                s(targetEl.alt, {
+                                    'click': 1
+                                });
+
+                                _e(_ex, 'click', function(e) {
+                                    _config.handler(e);
+                                });
+
+                                if (!_g(targetEl.alt)['keyup']) {
+                                    s(targetEl.alt, {
+                                        'keyup': 1
+                                    });
+                                    _e(window, 'keyup', function(e) {
+                                        _config.handler(e);
+                                    });
+                                }
+
+                                if (!_g(targetEl.alt)['arrowPress']) {
+                                    s(targetEl.alt, {
+                                        'arrowPress': 1
+                                    });
+                                    _e(window, 'keydown', _config.arrowPress);
+                                }
+
+                                if (!document.querySelector('#OpacityDivToBody')) {
+                                    _config.appendOpacityDivToBody();
+                                }
+                            }
+                        }
+                    },
+                    onclickHandler: function() {
+                        _config.handleImageContainer();
+                    }
+                };
+
+                return {
+                    o: _config.onclickHandler
+                }
+            }
+        };
+
+        return {
+            d: config.domReady,
+            e: config.eventsBinder,
+            u: config.eventsUnbinder,
+            s: config.setter,
+            g: config.getter,
+            F: config.constructor
+        }
+    };
+
+    var config = new Config();
+    if (config.g()[0]) {
+        config.g().forEach(function(i) {
+            var img = new Image(),
+                parent = document.querySelector('#' + i);
+            img.alt = i;
+            img.src = config.g(i, '', 1);
+            img.style.cursor = 'pointer';
+            img.style.width = config.g(i, '', '', 1);
+            parent.appendChild(img);
+        });
+
+        config.e(document, 'click', function(e) {
+            var event = e || event,
+                target = event.target || event.srcElement;
+            if ((target.tagName === 'IMG' && config.g(target.alt))) {
+                if (!config.g(target.alt, 1)) {
+                    var _config = new config.F(target, config.e, config.g, config.s, config.u);
+                    config.s(target.alt, '', _config);
+                }
+                if (config.g(target.alt, 1)) {
+                    config.g(target.alt, 1).o();
+                }
+            }
+        });
+    }
+    config.e(document, 'click', function(e) {
+        var _config = {
+                targetAttributes: {
+                    _title: [{
+                        "Back to 'Necessary Toolbox'": '(1) Induction: Toolbox for Front-end JavaScript Dev'
+                    }]
+                }
+            },
+            event = e || event,
+            _target = event.target || event.srcElement;
+        _config.targetAttributes._title.forEach(function(i, j) {
+            Object.keys(i).forEach(function(_i) {
+                if (_target.attributes['_title'] && _i === _target['attributes']['_title'].value) {
+                    var keyVal = _config['targetAttributes']['_title'][j][_i];
+                    Array.prototype.forEach.call(document.querySelectorAll('.tabs-li'),
+                        function(q) {
+                            var span = q.querySelector('span'),
+                                spanText = span['innerText' in span ? 'innerText' : 'innerHTML'];
+                            if (spanText === keyVal) {
+                                q.click ? q.click() : $(q).trigger('click');
+                            }
+                        });
+                }
+            })
+        });
+    });
+</script>
+
+<div id="main" style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">
+    <div style="margin-left: auto; margin-right: auto; border: 1px solid white; width: 98%;">
+        <table style="width: 100%; border: 2px; margin-left: auto; margin-right: auto; font-size: 16px;">
+            <tbody>
+                <tr>
+                    <th valign="middle" style="height: 2em; font-weight: bold; border: 1px solid white; text-align: center; color:#900000; padding: 1px; vertical-align: middle;">UI Knowledge</th>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: auto; margin-right: auto; height: 2em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="margin-top: 0.5em;">Core Products Overview</div>
+    </div>
+<div style="margin-left: auto; margin-right: auto; border: 1px solid #6690bc; width: 98%; text-align: center;">
+	<div style="margin-left: auto; margin-right: auto; padding: 0.5em; font-size: 16px; color: #333399; width: 98%; text-align: center;">
+        <div style="">MaxRecommend</div>
+    </div>
+        <div style="margin-left: auto; margin-right: auto; width: 98%;">
+        <table style="margin: 0 auto; width: 94%;">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="width: 28px; text-align: left; padding-left: 30px;">
+						<span style="line-height: 1.5em; color: #000000; font-size: 10pt;">
+							<ul style="list-style-type: square;">
+							
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<b>MaxRecommend</b> methodology centers on gathering products ratings on the tested websites.
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									This allows serving personalized commercial offers to each potential buyer, as visitors expressly state their online preferences towards collected products ratings. 
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Successful MaxRECOMMEND campaign shows a recommended list of products, depending on the implemented recommendations logic.
+								</li>
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									The recommendation logic is also referred to as 'MaxRECOMMEND method' or 'Optimization Method'. 
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Some of MaxRECOMMEND Optimization Methods are as follows: 
+								</li>
+								
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: circle;">
+											<li style="margin-top: 10px;">
+												Visitor Affinity (default method) is based on products other visitors have purchased or shown interest in, which is especially applicable for new visitors without purchasing track record; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Item Affinity is based on the most rated content among the visitor-rated products in the result of purchasing actions, viewing actions, viewing and purchasing actions, purchasing from the recommended list actions, etc.; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Most viewed logic; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Best sellers logic; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Last viewed logic; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Etc. 
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+								
+								<li style="list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									<b>MaxRECOMMEND</b> 'Campaign Optimization Methods' configuration is shown on the screenshot below: 
+								</li>
+								
+								<li style="text-align: center; margin-top: 15px; list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p id="coreproducts3"></p>
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Product ratings provide the groundwork for generating recommendations: gathering products ratings is time-bound, taking up to several weeks before MaxRecommend setup can be finalized. 
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									As a prerequisite to MaxRecommend setup, database of products (i.e. inventory file) is required to be imported. 
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									The inventory file is requested from the Client, the data import is to be handled by 'Inventory File Upload', as part of campaign's UI configuration. 
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Ratings for a given product list are gathered on the basis of applied campaign method that is executed by automated robots.  
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									The robots are back-end algorithmic constructs, instrumental in processing data for product ratings.  
+								</li>
+								
+								<li style="margin-top: 15px; list-style-type: square; line-height: 1.5em; color: #000000; font-size: 10pt;">
+									Ratings gathering:
+								</li>
+								
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: none;">
+											<li style="margin-top: 10px;">
+												Action tracking logic, which is familiar to us from generic MaxTEST, is similarly utilized for products ratings gathering, each product having a unique 'Product ID' or 'Product Category ID'.
+											</li>
+											<li style="margin-top: 10px;">							
+												Different trackable user-actions related to the listed products are assigned to differing rating values; thus, simple action tracking logic is implemented to capture visitor-preferences. 
+											</li>
+											<li style="margin-top: 10px;">							
+												For example, clicks on products placed onto the purchase basket will score a higher rating in comparison to the products clicked on advertising section of the website.
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+								
+										<li style="margin-top: 10px;">							
+												Speculative rating breakdown may look as follows: 
+											</li>
+											
+											
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: circle;">
+											<li style="margin-top: 10px;">
+												Clicks tracked within purchase basket may score 100% of current ratings;
+											</li>
+											<li style="margin-top: 10px;">							
+												Clicks tracked on initial stages of the purchasing actions may range between 10% to 50% - depending on visitor-approximation to final actions; 
+											</li>
+											<li style="margin-top: 10px;">							
+												Such actions as product selection, product views, product reservation and others may also be relevant for product ratings, therefore - trackable. 
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+								<li style="margin-top: 10px;">							
+									OPC is instrumental in visual monitoring of ratings collection, as ratings are being tracked and gathered. 
+									The screenshot below provides a sneak preview of such tracking:
+								</li>
+								<li style="text-align: center; margin-top: 15px; list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p id="coreproducts4"></p>
+								</li>
+								<li style="margin-top: 10px;">							
+									The ratings shown on the screenshot above are captured in the result of corresponding CG response that contains recommendations for MaxRECOMMEND campaign, particularly - the 'recmethod' appended to CG request.
+								</li>
+								<li style="margin-top: 10px;">							
+									'Recmethod' is a placeholder for the recommendation method, specifically utilized for the campaign in view.
+								</li>
+								<li style="margin-top: 10px;">							
+									Custom-created recommendations that have been generated according to pre-established ratings define the next best offer to make to each visitor. 
+								</li>
+								<li style="margin-top: 10px;">							
+									Visitor's buying history provides a means of retrospective analysis for ratings gathering. 
+								</li>
+								<li style="margin-top: 10px;">							
+									Such approach considerably increases overall conversion, creating the so called 'upsell' of by-products (complimentary products to offer). 
+								</li>
+								<li style="margin-top: 10px;">							
+									The ratings are cumulatively recalculated, accounting for the factor of time - ratings either fade in value or gain value due to time co-efficient. 
+								</li>
+								<li style="margin-top: 10px;">							
+									MaxRECOMMEND specificity: 	
+								</li>
+								<li style="list-style-type: none; line-height: 1.5em; color: #000000; font-size: 10pt;">
+										<p></p>
+										<hr style="border-style: inset; border-width: 1px;">
+										<ul style="list-style-type: circle;">
+											<li style="margin-top: 10px;">
+												MaxRecommend campaigns very seldom take place separately, rather being components of Master Campaigns (Master Campaign has other campaigns for its Variants).	
+											</li>
+											<li style="margin-top: 10px;">							
+												MaxRecommend campaign does not have variants as such, since there is no alternative content to serve - rather scripts for processing retrieved information. 
+											</li>
+											<li style="margin-top: 10px;">							
+												MaxRecommend will always be generated, as the website areas are static (nothing to alternatively change - no traffic splitting needed).
+											</li>
+											<li style="margin-top: 10px;">							
+												Since MaxRecommend is usually a child-campaign within a Master-campaign, scripts of MaxRECOMMEND should be mapped to the parent-campaign level (Master-campaign) in order to avoid redundant generations of Master-campaign in specific cases. 
+											</li>
+											<li style="margin-top: 10px;">							
+												For example: Master-campaign is working on home-page, one of the scripts of its child-campaign is mapped to basket-page. Master-campaign redundant generation will take place each time the child-campaign is generated, if child-campaign's scripts are not mapped on the Master-campaign level. 
+											</li>
+										</ul>
+										<hr style="border-style: inset; border-width: 1px;">
+										<p></p>
+								</li>
+						</ul>
+						</span>
+					</td>
+				</tr>
+    </tbody>
+    </table>
+    <p></p>
+	</div>
+</div>

@@ -1,0 +1,87 @@
+/*Author: Oleg Cherkashchenko*/
+
+/* Example 01 */
+var Style = {
+    attach: function (css, name) {
+        name = name || "mm_style";
+        var st = document.getElementById(name);
+        if (!st) {
+            st = document.createElement("style");
+            st.id = name;
+            st.media = "screen";
+            var mm = document.getElementById("mmcore.1");
+            mm.parentNode.insertBefore(st, mm);
+            //document.getElementsByTagName("head")[0].appendChild(st);  
+        }
+        if (st.styleSheet) {
+            st.styleSheet.cssText += css;
+        } else {
+            st.innerHTML += css;
+        }
+    },
+    detach: function (name) {
+        var st = document.getElementById(name);
+        st && st.parentNode.removeChild(st);
+    }
+};
+
+/* Example 02 */
+var Style = {
+    attach: function (css, name) {
+        name = name || "mm_style";
+        var st = document.getElementById(name);
+        if (!st) {
+            document.getElementsByTagName("head")[0].
+            insertAdjacentHTML("beforeend",
+                "<style media='screen' id='" + name + "' >" + css + "</style>");
+        } else if (st.styleSheet) {
+            st.styleSheet.cssText += css;
+        } else {
+            st.innerHTML += css;
+        }
+    },
+    detach: function (name) {
+        var st = document.getElementById(name);
+        st && st.parentNode.removeChild(st);
+    }
+};
+//Style.attach("*{height:auto; color:#000;}");  
+
+Updated version of AttachStyle snippet from Dec - 17, 2013:
+
+;
+(function () {
+    mmcore.snippets = mmcore.snippets || {};
+    mmcore.snippets.Style = function (css) {
+        var doc = document,
+            st = doc.createElement("style");
+        st.type = "text/css";
+        st.media = "screen";
+
+
+        function attach(css) {
+            if (st && css) {
+                if (st.styleSheet) {
+                    st.styleSheet.cssText += css;
+                } else {
+                    st.innerHTML += css;
+                }
+            }
+        }
+
+
+        function detach() {
+            st && st.parentNode.removeChild(st);
+            st = null;
+        }
+
+
+        attach(css);
+        var mm = doc.getElementById(mmcore.cprefix + 1);
+        mm.parentNode.insertBefore(st, mm);
+        return {
+            attach: attach,
+            detach: detach
+        }
+    }
+}());

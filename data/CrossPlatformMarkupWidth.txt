@@ -1,0 +1,12 @@
+
+
+/*'width="device-width"' constrains the width of the layout to the device width. 
+Surely setting 'intial-scale=1' is then telling the browser to zoom 100% (i.e. not scaled).
+"target-densityDpi=device-dpi" tells to render the native device dpi scheme
+"user-scalable=no" property prevents user from zooming in/out, guarantees that your images are exactly as you designed them.
+*/
+
+<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" width="device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1;"/>
